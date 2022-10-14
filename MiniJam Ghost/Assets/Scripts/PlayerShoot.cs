@@ -11,6 +11,9 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private float _maxAngle;
     [SerializeField] private GameObject _bulletPrefab;
 
+    [Header("Shoot sound Test")]
+    [SerializeField] private AudioClip shootSound;
+
 
     [SerializeField] private float _maxShootCooldown;
     private float _shootCooldown;
@@ -63,6 +66,9 @@ public class PlayerShoot : MonoBehaviour
         if (isReloading) { return; }
         Quaternion newRot = _gunPivot.rotation;
 
+        // test sound
+        SoundManager.PlaySound(shootSound, transform.position);
+            
         // trigger flash
         Flash.Trigger();
 

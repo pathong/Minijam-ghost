@@ -11,6 +11,7 @@ public abstract class Enemy : MonoBehaviour, IDamangable
 
     [SerializeField] protected float attackRange;
     [SerializeField] private float attackTime = 1f;
+    [SerializeField] private AudioClip walkSound;
     public int MaxHealth;
     private int currentHealth;
 
@@ -38,7 +39,7 @@ public abstract class Enemy : MonoBehaviour, IDamangable
         switch (currentState)
         {
             case EnemyState.Idle:
-                if(player!= null) { currentState = EnemyState.Chasing; }
+                if(player!= null) { currentState = EnemyState.Chasing; StartCoroutine(nameof(WalkSound)); }
                 break;
             case EnemyState.Chasing:
                 agent.SetDestination(player.transform.position);
@@ -72,6 +73,7 @@ public abstract class Enemy : MonoBehaviour, IDamangable
         if(Vector2.Distance(player.transform.position, this.transform.position) > attackRange)
         {
             currentState = EnemyState.Chasing;
+            StartCoroutine(nameof(WalkSound));
         }
         else
         {
@@ -96,4 +98,16 @@ public abstract class Enemy : MonoBehaviour, IDamangable
             Destroy(gameObject, 2f); 
         } //TODO : maybe do something else
     }
+
+    IEnumerator WalkSound()
+    {
+        while(currentState == EnemyState.Chasing)
+        {
+            float wait = 1f;
+            SoundManager.PlaySound(walkSound, transform.position);
+            yield return new WaitForSeconds(wait);
+            
+        }
+    }
 }
+
