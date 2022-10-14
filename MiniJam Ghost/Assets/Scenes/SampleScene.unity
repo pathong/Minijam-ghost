@@ -469,7 +469,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1935407409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -532,6 +532,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 60283515, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 60283517, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
+      propertyPath: m_LightVolumeOpacity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1090859289, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1101458929, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6484700389835286381, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -556,6 +572,10 @@ PrefabInstance:
       propertyPath: m_CollisionDetection
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6484700390546897882, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
+      propertyPath: _bulletPrefab
+      value: 
+      objectReference: {fileID: 8639595762402815204, guid: 19f7ab93e998dab49bfacbb0a048c8ed, type: 3}
     - target: {fileID: 6484700390546897882, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
       propertyPath: maxBulletAmount
       value: 4

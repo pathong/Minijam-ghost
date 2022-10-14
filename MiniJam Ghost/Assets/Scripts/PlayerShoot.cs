@@ -72,12 +72,16 @@ public class PlayerShoot : MonoBehaviour
             _gunPivot.transform.localEulerAngles.y,
             _gunPivot.transform.localEulerAngles.z + addedOffset);
 
+
             GameObject bullet =  Instantiate(_bulletPrefab, _gunTip.position, newRot);
+
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            bullet.GetComponent<BulletBehaviour>().SetDistance(Vector2.Distance(mousePos, transform.position));
 
         }
 
 
-        
+
 
         currentBulletAmount -= 1;
         _shootCooldown = _maxShootCooldown;
