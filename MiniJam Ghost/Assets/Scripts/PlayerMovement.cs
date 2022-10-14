@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public Animator animator;
     [SerializeField] private float _moveSpeed;
     public float MoveSpeed
     {
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = _dir * _moveSpeed * Time.deltaTime;
+        animator.SetFloat("Speed", _dir.x);
     }
 
 
