@@ -26,6 +26,30 @@ TextureImporter:
   - first:
       213: -3747212842015124307
     second: Farmer-Sheet_7
+  - first:
+      213: -7522471145768130173
+    second: Farmer-Sheet_8
+  - first:
+      213: 5114161491835726569
+    second: Farmer-Sheet_9
+  - first:
+      213: -4884046877558352411
+    second: Farmer-Sheet_10
+  - first:
+      213: 2527604944261976973
+    second: Farmer-Sheet_11
+  - first:
+      213: 2872269850232705622
+    second: Farmer-Sheet_12
+  - first:
+      213: -1072978206936350652
+    second: Farmer-Sheet_13
+  - first:
+      213: 3079620954755617135
+    second: Farmer-Sheet_14
+  - first:
+      213: 2849868515624519155
+    second: Farmer-Sheet_15
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -119,7 +143,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 0
+        y: 150
         width: 26
         height: 50
       alignment: 0
@@ -140,7 +164,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 26
-        y: 0
+        y: 150
         width: 26
         height: 50
       alignment: 0
@@ -161,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 52
-        y: 0
+        y: 150
         width: 26
         height: 50
       alignment: 0
@@ -182,7 +206,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 78
-        y: 0
+        y: 150
         width: 26
         height: 50
       alignment: 0
@@ -202,8 +226,8 @@ TextureImporter:
       name: Farmer-Sheet_4
       rect:
         serializedVersion: 2
-        x: 104
-        y: 0
+        x: 0
+        y: 100
         width: 26
         height: 50
       alignment: 0
@@ -223,8 +247,8 @@ TextureImporter:
       name: Farmer-Sheet_5
       rect:
         serializedVersion: 2
-        x: 130
-        y: 0
+        x: 26
+        y: 100
         width: 26
         height: 50
       alignment: 0
@@ -244,8 +268,8 @@ TextureImporter:
       name: Farmer-Sheet_6
       rect:
         serializedVersion: 2
-        x: 156
-        y: 0
+        x: 52
+        y: 100
         width: 26
         height: 50
       alignment: 0
@@ -265,8 +289,8 @@ TextureImporter:
       name: Farmer-Sheet_7
       rect:
         serializedVersion: 2
-        x: 182
-        y: 0
+        x: 78
+        y: 100
         width: 26
         height: 50
       alignment: 0
@@ -278,6 +302,174 @@ TextureImporter:
       bones: []
       spriteID: da418e516c93ffbc0800000000000000
       internalID: -3747212842015124307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Farmer-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 50
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3896d534950da9790800000000000000
+      internalID: -7522471145768130173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Farmer-Sheet_9
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 50
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9eaa9d4e7c629f640800000000000000
+      internalID: 5114161491835726569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Farmer-Sheet_10
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 50
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e557ccdd31683cb0800000000000000
+      internalID: -4884046877558352411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Farmer-Sheet_11
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 50
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d8391431e4bd31320800000000000000
+      internalID: 2527604944261976973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Farmer-Sheet_12
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6525f2af53a5cd720800000000000000
+      internalID: 2872269850232705622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Farmer-Sheet_13
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 0
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 440c2d371040c11f0800000000000000
+      internalID: -1072978206936350652
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Farmer-Sheet_14
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 0
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f61de0b11f20dba20800000000000000
+      internalID: 3079620954755617135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Farmer-Sheet_15
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 0
+        width: 26
+        height: 50
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f58e52d054cc8720800000000000000
+      internalID: 2849868515624519155
       vertices: []
       indices: 
       edges: []
