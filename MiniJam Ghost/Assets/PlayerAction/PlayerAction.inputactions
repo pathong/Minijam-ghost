@@ -15,9 +15,18 @@
                     "initialStateCheck": true
                 },
                 {
-                    "name": "jump",
+                    "name": "Shoot",
                     "type": "Button",
-                    "id": "7a164538-6ad2-467a-8a36-a002c9f9ddcb",
+                    "id": "467d60b8-2026-4f54-8c24-eaba98a8f167",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Reload",
+                    "type": "Button",
+                    "id": "e9e1b94e-08d7-4f7a-b335-2dd7ed746df6",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -82,12 +91,23 @@
                 },
                 {
                     "name": "",
-                    "id": "28e66804-6796-40d2-ac84-78c2764a0b9f",
-                    "path": "<Keyboard>/space",
+                    "id": "86d941b8-d8a9-46b1-b654-1ad86fa177c3",
+                    "path": "<Mouse>/leftButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "jump",
+                    "action": "Shoot",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df68eb48-9c71-42a2-867a-581dc3cc50f0",
+                    "path": "<Keyboard>/r",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Reload",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

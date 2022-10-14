@@ -37,9 +37,18 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""jump"",
+                    ""name"": ""Shoot"",
                     ""type"": ""Button"",
-                    ""id"": ""7a164538-6ad2-467a-8a36-a002c9f9ddcb"",
+                    ""id"": ""467d60b8-2026-4f54-8c24-eaba98a8f167"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Reload"",
+                    ""type"": ""Button"",
+                    ""id"": ""e9e1b94e-08d7-4f7a-b335-2dd7ed746df6"",
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """",
@@ -104,12 +113,23 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""28e66804-6796-40d2-ac84-78c2764a0b9f"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""id"": ""86d941b8-d8a9-46b1-b654-1ad86fa177c3"",
+                    ""path"": ""<Mouse>/leftButton"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""jump"",
+                    ""action"": ""Shoot"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""df68eb48-9c71-42a2-867a-581dc3cc50f0"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Reload"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -121,7 +141,8 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
         // Movement
         m_Movement = asset.FindActionMap("Movement", throwIfNotFound: true);
         m_Movement_Move = m_Movement.FindAction("Move", throwIfNotFound: true);
-        m_Movement_jump = m_Movement.FindAction("jump", throwIfNotFound: true);
+        m_Movement_Shoot = m_Movement.FindAction("Shoot", throwIfNotFound: true);
+        m_Movement_Reload = m_Movement.FindAction("Reload", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -182,13 +203,15 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     private readonly InputActionMap m_Movement;
     private IMovementActions m_MovementActionsCallbackInterface;
     private readonly InputAction m_Movement_Move;
-    private readonly InputAction m_Movement_jump;
+    private readonly InputAction m_Movement_Shoot;
+    private readonly InputAction m_Movement_Reload;
     public struct MovementActions
     {
         private @PlayerAction m_Wrapper;
         public MovementActions(@PlayerAction wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Movement_Move;
-        public InputAction @jump => m_Wrapper.m_Movement_jump;
+        public InputAction @Shoot => m_Wrapper.m_Movement_Shoot;
+        public InputAction @Reload => m_Wrapper.m_Movement_Reload;
         public InputActionMap Get() { return m_Wrapper.m_Movement; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -201,9 +224,12 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Move.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnMove;
-                @jump.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
-                @jump.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
-                @jump.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnJump;
+                @Shoot.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnShoot;
+                @Shoot.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnShoot;
+                @Shoot.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnShoot;
+                @Reload.started -= m_Wrapper.m_MovementActionsCallbackInterface.OnReload;
+                @Reload.performed -= m_Wrapper.m_MovementActionsCallbackInterface.OnReload;
+                @Reload.canceled -= m_Wrapper.m_MovementActionsCallbackInterface.OnReload;
             }
             m_Wrapper.m_MovementActionsCallbackInterface = instance;
             if (instance != null)
@@ -211,9 +237,12 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @jump.started += instance.OnJump;
-                @jump.performed += instance.OnJump;
-                @jump.canceled += instance.OnJump;
+                @Shoot.started += instance.OnShoot;
+                @Shoot.performed += instance.OnShoot;
+                @Shoot.canceled += instance.OnShoot;
+                @Reload.started += instance.OnReload;
+                @Reload.performed += instance.OnReload;
+                @Reload.canceled += instance.OnReload;
             }
         }
     }
@@ -221,6 +250,7 @@ public partial class @PlayerAction : IInputActionCollection2, IDisposable
     public interface IMovementActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnJump(InputAction.CallbackContext context);
+        void OnShoot(InputAction.CallbackContext context);
+        void OnReload(InputAction.CallbackContext context);
     }
 }

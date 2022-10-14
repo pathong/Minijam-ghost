@@ -34,7 +34,6 @@ public abstract class BulletBehaviour : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        //if(collision.gameObject.tag == "bullet" || collision.gameObject.tag == "Player") { return; }
         InvokeBulletFunction();
     }
 
