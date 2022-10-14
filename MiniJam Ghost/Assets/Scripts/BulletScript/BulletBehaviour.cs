@@ -15,7 +15,7 @@ public abstract class BulletBehaviour : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         lifeTime = UnityEngine.Random.Range(.3f, .5f);
-        rb.AddForce(transform.right * bulletSpeed*10);
+        rb.AddForce(transform.right * bulletSpeed *10);
     }
 
 
@@ -35,6 +35,19 @@ public abstract class BulletBehaviour : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         InvokeBulletFunction();
+        IDamangable damagable = collision.gameObject.GetComponent<IDamangable>();
+        if(damagable != null)
+        {
+            damagable.TakeDamage();
+
+            // knock back
+
+            Vector2 dir = collision.transform.position - transform.position;
+            collision.GetComponent<Rigidbody2D>()?.AddForce(dir.normalized, ForceMode2D.Impulse);
+
+        }
+
+
     }
 
 

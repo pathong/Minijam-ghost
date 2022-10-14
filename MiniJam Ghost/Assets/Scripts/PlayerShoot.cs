@@ -77,7 +77,7 @@ public class PlayerShoot : MonoBehaviour
         }
 
 
-        this.GetComponent<PlayerMovement>().Knockback(transform.position - _gunTip.position);
+        
 
         currentBulletAmount -= 1;
         _shootCooldown = _maxShootCooldown;
@@ -86,6 +86,7 @@ public class PlayerShoot : MonoBehaviour
     public void Reload(InputAction.CallbackContext ctx)
     {
         if(currentBulletAmount > 0) { return; }
+        if (isReloading) { return; }
         isReloading = true;
         this.GetComponent<PlayerMovement>().MoveSpeed /= 2;
 

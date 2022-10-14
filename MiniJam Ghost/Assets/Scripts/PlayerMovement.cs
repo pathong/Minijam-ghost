@@ -28,13 +28,13 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        rb.velocity = _dir * _moveSpeed * Time.deltaTime;           
+        rb.velocity = _dir * _moveSpeed * Time.deltaTime;
     }
 
 
     public void Knockback(Vector2 knockbackDir)
     {
-        Debug.Log("hey");
+        rb.AddForce(knockbackDir.normalized, ForceMode2D.Impulse);
     }
 
 }
