@@ -63,6 +63,9 @@ public class PlayerShoot : MonoBehaviour
         if (isReloading) { return; }
         Quaternion newRot = _gunPivot.rotation;
 
+        // trigger flash
+        Flash.Trigger();
+
         for (int i = 0; i < _bulletAmount; i++)
         {
             float addedOffset = Random.Range(-_maxAngle, _maxAngle);
