@@ -81,9 +81,9 @@ public class Flash : MonoBehaviour
         while(light.intensity > 0)
         {
             light.intensity -= fadeSpeed;
-            Debug.Log(light.intensity);
             yield return new WaitForSeconds(.3f);
         }
+        light.intensity = 0;
     }
 
 
