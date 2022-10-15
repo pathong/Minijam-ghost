@@ -1456,6 +1456,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6d61f1cae0bbe143a159a81616a0240, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
 --- !u!4 &1961021318253610087
 Transform:
   m_ObjectHideFlags: 0
@@ -1504,8 +1505,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd5da47e96c2f2f4280ea3e975e1572c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   _moveSpeed: 200
+  walkSound: {fileID: 0}
   rb: {fileID: 1961021318277355728}
+  _knockbackForce: 0
 --- !u!212 &1961021318277355732
 SpriteRenderer:
   m_ObjectHideFlags: 0
