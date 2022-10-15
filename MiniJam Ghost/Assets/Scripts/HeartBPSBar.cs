@@ -9,10 +9,7 @@ public class HeartBPSBar : MonoBehaviour
     public float amplitude = 1;
     public float frequency = 1;
     public Vector2 xLimits = new Vector2(0, 1);
-    public float movementSpeed = 1;
-    [Range(0, 2 * Mathf.PI)]
-    public float radians;
-    public float dRainAmp = .001f;
+
     void Start()
     {
         myLineRenderer = GetComponent<LineRenderer>();
