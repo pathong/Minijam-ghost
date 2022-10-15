@@ -439,7 +439,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 449ce0b2b2eac7e47b35446e514a7311, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bar: {fileID: 357354095}
+  bar: {fileID: 0}
   datas:
   - color: {r: 0.4811321, g: 0.21106265, b: 0.24965106, a: 1}
     amp: 0.01
@@ -462,10 +462,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0a93a95c8ae98c4397c989b45689b8c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  border: {fileID: 21300000, guid: fafe42b37bd123745bb285f0116792a6, type: 3}
-  fire: {fileID: 21300000, guid: 486a1964d1e70ea4e9d3e993d7e34369, type: 3}
-  normal: {fileID: 21300000, guid: f919e523323e682418ff614a3395dc56, type: 3}
-  _light: {fileID: 21300000, guid: e2e88d62eee7acc40943905be7499d84, type: 3}
   borderImg: {fileID: 4332793205594928696, guid: 2ce84655b0382d54c9ccb48f3043baed, type: 3}
   so: {fileID: 11400000, guid: a1b1ccf6ba51aaf43866241b3ccc66ae, type: 2}
   slots: []
@@ -493,6 +489,14 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 1108198920}
+    - target: {fileID: 6484700390546897882, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
+      propertyPath: magazine
+      value: 
+      objectReference: {fileID: 11400000, guid: a1b1ccf6ba51aaf43866241b3ccc66ae, type: 2}
+    - target: {fileID: 6484700390546897882, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
+      propertyPath: reloadSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 99a83dd991723224fa06bc745d525b96, type: 3}
     - target: {fileID: 6484700390546897884, guid: b5a3ad0e84f18494ba841d42972eb1ae, type: 3}
       propertyPath: m_Name
       value: Player

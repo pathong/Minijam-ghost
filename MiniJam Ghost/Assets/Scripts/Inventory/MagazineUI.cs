@@ -6,11 +6,6 @@ using UnityEngine.UI;
 public class MagazineUI : MonoBehaviour
 {
 
-    [SerializeField] private Sprite border;
-    [SerializeField] private Sprite fire;
-    [SerializeField] private Sprite normal;
-    [SerializeField] private Sprite _light;
-
     [SerializeField] private Image borderImg;
     [SerializeField] private MagazineSO so;
     [SerializeField] private List<Image> slots;
@@ -22,7 +17,10 @@ public class MagazineUI : MonoBehaviour
         SetSlot();
     }
 
-
+    private void Update()
+    {
+        SetSlot();
+    }
 
 
 
@@ -39,7 +37,7 @@ public class MagazineUI : MonoBehaviour
             Image img =  Instantiate(borderImg);
             slots.Add(img);
             img.transform.SetParent(slotParent, false);
-            img.sprite = border;
+            img.sprite = so.emptyBullet.sprite;
         }
     }
 
@@ -47,27 +45,10 @@ public class MagazineUI : MonoBehaviour
     {
         for (int i = 0; i < so.capacity; i++)
         {
-            slots[i].sprite = GetSprite(so.magazine[i]); 
+            slots[i].sprite = so.magazine[i].sprite; 
         }
     }
 
-    public Sprite GetSprite(BulletType type)
-    {
-        switch (type)
-        {
-            case (BulletType.Empty):
-                return border;
-            case (BulletType.Normal):
-                return normal;
-            case (BulletType.Fire):
-                return fire;
-            case (BulletType.Light):
-                return _light;
-        }
-        return border;
-            
-
-    }
 
 
 

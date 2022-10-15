@@ -5,18 +5,22 @@ using UnityEngine;
 [CreateAssetMenu(fileName = "Magazine", menuName = "ScriptableObject/Magazine")]
 public class MagazineSO : ScriptableObject 
 {
-    public BulletType[] magazine;
+    public BulletSO[] magazine;
+    public BulletSO emptyBullet;
+    [SerializeField] private BulletSO NormalBullet;
+    [SerializeField] private BulletSO FireBullet;
+    [SerializeField] private BulletSO LightBullet;
     public int capacity;
 
 
     [ContextMenu("Reset Magazine")]
     public void ResetMagazine()
     {
-        magazine = new BulletType[capacity];
+        magazine = new BulletSO[capacity];
 
         for (int i = 0; i < capacity; i++)
         {
-            magazine[i] = BulletType.Empty;
+            magazine[i] = emptyBullet;
         }
     }
 
@@ -24,7 +28,7 @@ public class MagazineSO : ScriptableObject
     {
         for (int i = 0; i < capacity; i++)
         {
-            if (magazine[i] == BulletType.Empty)
+            if (magazine[i].Type == BulletType.Empty)
             {
                 return i;
             }
@@ -38,7 +42,7 @@ public class MagazineSO : ScriptableObject
     {
         for (int i = 0; i < capacity; i++)
         {
-            if (magazine[i] != BulletType.Empty)
+            if (magazine[i].Type != BulletType.Empty)
             {
                 return i;
             }
@@ -48,7 +52,7 @@ public class MagazineSO : ScriptableObject
     }
 
 
-    public void AddBullet(BulletType bullet)
+    public void AddBullet(BulletSO bullet)
     {
         int index = GetEmptyIndex();
         if (index == -1) { return; }
@@ -58,7 +62,23 @@ public class MagazineSO : ScriptableObject
 
     public void RemoveBullet(int index)
     {
-        magazine[index] = BulletType.Empty;
+        magazine[index] = emptyBullet;
+
+    }
+
+    public GameObject GetandShoot()
+    {
+        int index = GetFirstBullet();
+        if(index == -1) { return null; }
+        GameObject bulletToShoot = magazine[index].Prefab;
+        RemoveBullet(index);
+        return bulletToShoot;
+
+
+
+
 
     }
 }
+
+

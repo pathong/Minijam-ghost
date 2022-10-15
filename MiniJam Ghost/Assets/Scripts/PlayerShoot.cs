@@ -26,6 +26,8 @@ public class PlayerShoot : MonoBehaviour
     [SerializeField] private int maxBulletAmount;
     private int currentBulletAmount;
 
+    [SerializeField] private MagazineSO magazine;
+
 
     public bool isReloading;
 
@@ -65,7 +67,7 @@ public class PlayerShoot : MonoBehaviour
     public void Shoot(InputAction.CallbackContext ctx)
     {
         if(_shootCooldown >= 0) { return; }
-        if(currentBulletAmount <= 0) { return; }
+        if(magazine.GetFirstBullet() == -1) { return; }
         if (isReloading) { return; }
         Quaternion newRot = _gunPivot.rotation;
 
@@ -77,7 +79,8 @@ public class PlayerShoot : MonoBehaviour
         Flash.Trigger();
         // trigger gun animation
         animator.SetTrigger("Shoot");
-
+        GameObject bullet = magazine.GetandShoot();
+        Debug.Log(bullet.name);
         for (int i = 0; i < _bulletAmount; i++)
         {
             float addedOffset = Random.Range(-_maxAngle, _maxAngle);
@@ -88,10 +91,10 @@ public class PlayerShoot : MonoBehaviour
             _gunPivot.transform.localEulerAngles.z + addedOffset);
 
 
-            GameObject bullet =  Instantiate(_bulletPrefab, _gunTip.position, newRot);
+            GameObject SpawnedBullet =  Instantiate(bullet, _gunTip.position, newRot);
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            bullet.GetComponent<BulletBehaviour>().SetDistance(Vector2.Distance(mousePos, transform.position));
+            SpawnedBullet.GetComponent<BulletBehaviour>().SetDistance(Vector2.Distance(mousePos, transform.position));
 
         }
 
