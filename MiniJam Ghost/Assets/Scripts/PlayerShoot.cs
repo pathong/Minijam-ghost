@@ -5,11 +5,17 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
+    public Animator animator;
+
     [SerializeField] private Transform _gunTip;
     [SerializeField] private Transform _gunPivot;
     [SerializeField] private int _bulletAmount;
     [SerializeField] private float _maxAngle;
     [SerializeField] private GameObject _bulletPrefab;
+
+    [Header("Shoot sound Test")]
+    [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip reloadSound;
 
 
     [SerializeField] private float _maxShootCooldown;
@@ -19,6 +25,8 @@ public class PlayerShoot : MonoBehaviour
 
     [SerializeField] private int maxBulletAmount;
     private int currentBulletAmount;
+
+    [SerializeField] private MagazineSO magazine;
 
 
     public bool isReloading;
@@ -59,10 +67,20 @@ public class PlayerShoot : MonoBehaviour
     public void Shoot(InputAction.CallbackContext ctx)
     {
         if(_shootCooldown >= 0) { return; }
-        if(currentBulletAmount <= 0) { return; }
+        if(magazine.GetFirstBullet() == -1) { return; }
         if (isReloading) { return; }
         Quaternion newRot = _gunPivot.rotation;
 
+        // test sound
+        SoundManager.PlaySound(shootSound, transform.position);
+
+        if (SoundGraphManager.soundGraphManager != null) { SoundGraphManager.TriggerSoundGraph(transform.position); } 
+        // trigger flash
+        Flash.Trigger();
+        // trigger gun animation
+        animator.SetTrigger("Shoot");
+        GameObject bullet = magazine.GetandShoot();
+        Debug.Log(bullet.name);
         for (int i = 0; i < _bulletAmount; i++)
         {
             float addedOffset = Random.Range(-_maxAngle, _maxAngle);
@@ -72,12 +90,16 @@ public class PlayerShoot : MonoBehaviour
             _gunPivot.transform.localEulerAngles.y,
             _gunPivot.transform.localEulerAngles.z + addedOffset);
 
-            GameObject bullet =  Instantiate(_bulletPrefab, _gunTip.position, newRot);
+
+            GameObject SpawnedBullet =  Instantiate(bullet, _gunTip.position, newRot);
+
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            SpawnedBullet.GetComponent<BulletBehaviour>().SetDistance(Vector2.Distance(mousePos, transform.position));
 
         }
 
 
-        this.GetComponent<PlayerMovement>().Knockback(transform.position - _gunTip.position);
+
 
         currentBulletAmount -= 1;
         _shootCooldown = _maxShootCooldown;
@@ -86,8 +108,12 @@ public class PlayerShoot : MonoBehaviour
     public void Reload(InputAction.CallbackContext ctx)
     {
         if(currentBulletAmount > 0) { return; }
+        if (isReloading) { return; }
         isReloading = true;
         this.GetComponent<PlayerMovement>().MoveSpeed /= 2;
+
+        // trigger gun animation
+        animator.SetBool("isReloading", true);
 
         StartCoroutine(nameof(Reloading));
     }
@@ -98,10 +124,12 @@ public class PlayerShoot : MonoBehaviour
         while(currentBulletAmount != maxBulletAmount)
         {
             yield return new WaitForSeconds(reloadTime);
-            Debug.Log("reload");
+            SoundManager.PlaySound(reloadSound);
             currentBulletAmount++;
         }
         isReloading = false;
+        animator.SetBool("isReloading", false);
+
         this.GetComponent<PlayerMovement>().MoveSpeed *= 2;
     }
 

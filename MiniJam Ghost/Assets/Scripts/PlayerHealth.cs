@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerHealth : MonoBehaviour
+public class PlayerHealth : MonoBehaviour, IDamangable
 {
     public int Health;
-    private int currentHealth;
+    [HideInInspector] public int currentHealth;
+
+    [SerializeField] private AudioClip TakeDmgSound;
 
     private void OnEnable()
     {
@@ -13,9 +15,12 @@ public class PlayerHealth : MonoBehaviour
     }
 
 
-    public void TakeDamge()
-    {
-        currentHealth -= 1;
 
+    void IDamangable.TakeDamage()
+    {
+        if(currentHealth <= 0) { return; }
+        SoundManager.PlaySound(TakeDmgSound);
+        currentHealth -= 1;
+        if(currentHealth <= 0) { Destroy(gameObject); }
     }
 }

@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d92759b37798cba42ae0a608bca0740c, type: 3}
+  m_Name: Magazine
+  m_EditorClassIdentifier: 
+  magazine:
+  - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
+  - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
+  - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
+  - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
+  - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
+  emptyBullet: {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
+  NormalBullet: {fileID: 11400000, guid: 761ec13e47129ee4d9059173759a5eee, type: 2}
+  FireBullet: {fileID: 11400000, guid: 19054c2a5c2c27140b00f0ca554ddf4d, type: 2}
+  LightBullet: {fileID: 11400000, guid: c550298a7a2f5104d98202b7c7f9fd2d, type: 2}
+  capacity: 5

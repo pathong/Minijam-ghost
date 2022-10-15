@@ -14,7 +14,8 @@ public abstract class ObjectInteraction : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
-            collision.GetComponent<PlayerInteraction>().OpenInteractionIcon();
+            if (!gameObject.GetComponent<ObjectBehavior>().CheckUsed())
+                collision.GetComponent<PlayerInteraction>().OpenInteractionIcon();
     }
 
     private void OnTriggerExit2D(Collider2D collision)

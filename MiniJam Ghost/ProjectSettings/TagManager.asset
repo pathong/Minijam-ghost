@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 2
   tags:
   - bullet
+  - Item
   layers:
   - Default
   - TransparentFX
@@ -12,10 +13,10 @@ TagManager:
   - 
   - Water
   - UI
-  - BulletUndetectableLayer
-  - 
-  - 
-  - 
+  - Bullet
+  - Enemy
+  - Player
+  - Interactables
   - 
   - 
   - 
@@ -45,9 +46,12 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Enemy
+    uniqueID: 4237514731
+    locked: 0
   - name: Player
     uniqueID: 4168177339
     locked: 0
-  - name: Enemy
-    uniqueID: 4237514731
+  - name: Wall
+    uniqueID: 1972947751
     locked: 0
