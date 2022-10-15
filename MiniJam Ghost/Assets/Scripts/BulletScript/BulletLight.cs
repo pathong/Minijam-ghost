@@ -9,9 +9,10 @@ public class BulletLight : BulletBehaviour
 
     public override void InvokeBulletFunction()
     {
+        
         base.InvokeBulletFunction();
         GameObject light = Instantiate(lightBulb, transform.position, Quaternion.identity);
-        Destroy(light, 5f);
+        Destroy(light, 10f);
         
     }
 
