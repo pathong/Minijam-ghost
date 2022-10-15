@@ -12,6 +12,7 @@ public class Flash : MonoBehaviour
     public Color dColor;
     public float dTime;
     public float dIntensity;
+    //public float fadeSpeed;
 
     // reference
     new Light2D light;
@@ -69,6 +70,21 @@ public class Flash : MonoBehaviour
         light.color = color;
         yield return new WaitForSeconds(time);
         light.color = dColor;
-        light.intensity = 0;
+
+        // TEST FADING INTENSITY
+        StartCoroutine(FadeLight());
+        //light.intensity = 0;
     }
+
+    IEnumerator FadeLight(float fadeSpeed = .3f)
+    {
+        while(light.intensity > 0)
+        {
+            light.intensity -= fadeSpeed;
+            Debug.Log(light.intensity);
+            yield return new WaitForSeconds(.3f);
+        }
+    }
+
+
 }
