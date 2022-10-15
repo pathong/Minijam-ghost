@@ -17,7 +17,6 @@ public class HealthBarManager : MonoBehaviour
         bar.myLineRenderer.startColor = data.color;
         bar.myLineRenderer.endColor = data.color;
         bar.amplitude = data.amp;
-
     }
 
 

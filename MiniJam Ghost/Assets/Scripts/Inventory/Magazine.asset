@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d92759b37798cba42ae0a608bca0740c, type: 3}
   m_Name: Magazine
   m_EditorClassIdentifier: 
-  magazine: 03000000030000000300000003000000
-  capacity: 4
+  magazine: 0300000001000000030000000000000003000000
+  capacity: 5
