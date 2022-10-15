@@ -8,9 +8,9 @@ public class CameraFollowPlayer : MonoBehaviour
 
     private void Update()
     {
-        Transform playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
-        if(playerTransform != null)
-        {
+        GameObject _player = GameObject.FindGameObjectWithTag("Player");
+        if (_player != null) {
+            Transform playerTransform = _player.transform;
             transform.position = new Vector3(playerTransform.position.x, playerTransform.position.y, transform.position.z);
         }
     }

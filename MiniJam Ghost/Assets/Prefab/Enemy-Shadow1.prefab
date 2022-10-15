@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 7606058164219017988}
   - component: {fileID: 7606058164219017989}
   - component: {fileID: 7606058164219017993}
+  - component: {fileID: 400503674}
+  - component: {fileID: 7937568575019609530}
   m_Layer: 7
   m_Name: Enemy-Shadow1
   m_TagString: Untagged
@@ -73,8 +75,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: -57452565
-  m_SortingLayer: 1
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 747271944055190048, guid: 71b981e9eabd86b4a8d96ba4f9afa934, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -181,7 +183,7 @@ MonoBehaviour:
   - {x: -0.37935925, y: 0.2959968, z: 0}
   m_ShapePathHash: 2046141669
   m_Mesh: {fileID: 0}
-  m_InstanceId: 93774
+  m_InstanceId: -13388
 --- !u!114 &7606058164219017993
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -197,9 +199,44 @@ MonoBehaviour:
   currentState: 0
   attackRange: 2
   attackTime: 1
-  walkSound: {fileID: 0}
+  walkSound: {fileID: 8300000, guid: b56d51d22361e24479d59fe1b820afa9, type: 3}
   MaxHealth: 10
   player: {fileID: 0}
   playerLayer:
     serializedVersion: 2
     m_Bits: 256
+--- !u!95 &400503674
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606058164219017998}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5df0788128db3a74a972cdef9788c7ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &7937568575019609530
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7606058164219017998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c18c784ba50584a529e9fb89a90cbe62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  optionalChildSprites: []
+  originOffsetY: -0.08
+  activateAlphaAdjustment: 0
+  alphaDecreaseFactor: 0.5
