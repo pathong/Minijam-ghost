@@ -80,7 +80,6 @@ public class PlayerShoot : MonoBehaviour
         // trigger gun animation
         animator.SetTrigger("Shoot");
         GameObject bullet = magazine.GetandShoot();
-        Debug.Log(bullet.name);
         for (int i = 0; i < _bulletAmount; i++)
         {
             float addedOffset = Random.Range(-_maxAngle, _maxAngle);

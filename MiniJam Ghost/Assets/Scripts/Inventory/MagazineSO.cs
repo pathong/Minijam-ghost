@@ -74,11 +74,34 @@ public class MagazineSO : ScriptableObject
         RemoveBullet(index);
         return bulletToShoot;
 
-
-
-
-
     }
+
+
+    [ContextMenu("Add Normal")]
+    public void AddNormal()
+    {
+        for (int i = 0; i < capacity; i++)
+        {
+            AddBullet(NormalBullet);
+        }
+    }
+    [ContextMenu("Add Fire")]
+    public void AddFire()
+    {
+        for (int i = 0; i < capacity; i++)
+        {
+            AddBullet(FireBullet);
+        }
+    }
+    [ContextMenu("Add Light")]
+    public void Light()
+    {
+        for (int i = 0; i < capacity; i++)
+        {
+            AddBullet(LightBullet);
+        }
+    }
+
 }
 
 
