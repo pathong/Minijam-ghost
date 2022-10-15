@@ -11,10 +11,8 @@ public class BulletLight : BulletBehaviour
     {
         
         base.InvokeBulletFunction();
-        Debug.Log("Teset");
-        
         GameObject light = Instantiate(lightBulb, transform.position, Quaternion.identity);
-        Destroy(light, 5f);
+        Destroy(light, 10f);
         
     }
 
