@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerShoot : MonoBehaviour
 {
+    public Animator animator;
+
     [SerializeField] private Transform _gunTip;
     [SerializeField] private Transform _gunPivot;
     [SerializeField] private int _bulletAmount;
@@ -73,6 +75,8 @@ public class PlayerShoot : MonoBehaviour
         if (SoundGraphManager.soundGraphManager != null) { SoundGraphManager.TriggerSoundGraph(transform.position); } 
         // trigger flash
         Flash.Trigger();
+        // trigger gun animation
+        animator.SetTrigger("Shoot");
 
         for (int i = 0; i < _bulletAmount; i++)
         {
@@ -105,6 +109,9 @@ public class PlayerShoot : MonoBehaviour
         isReloading = true;
         this.GetComponent<PlayerMovement>().MoveSpeed /= 2;
 
+        // trigger gun animation
+        animator.SetBool("isReloading", true);
+
         StartCoroutine(nameof(Reloading));
     }
 
@@ -118,6 +125,8 @@ public class PlayerShoot : MonoBehaviour
             currentBulletAmount++;
         }
         isReloading = false;
+        animator.SetBool("isReloading", false);
+
         this.GetComponent<PlayerMovement>().MoveSpeed *= 2;
     }
 
