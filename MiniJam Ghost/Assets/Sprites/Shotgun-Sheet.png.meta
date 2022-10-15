@@ -1,55 +1,46 @@
 fileFormatVersion: 2
-guid: 98965f7e63390be41b35aeccc98ffefb
+guid: 3b1d08e72f99dc94093b10e0958e056d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7442452218142823799
-    second: Farmer-Sheet_0
+      213: 17450447491162352
+    second: Shotgun-Sheet_0
   - first:
-      213: 199565439631203289
-    second: Farmer-Sheet_1
+      213: 8518857350414691307
+    second: Shotgun-Sheet_1
   - first:
-      213: -1496036341645606048
-    second: Farmer-Sheet_2
+      213: -8748882734853009771
+    second: Shotgun-Sheet_2
   - first:
-      213: -1752003971898711217
-    second: Farmer-Sheet_3
+      213: 5087884616720737731
+    second: Shotgun-Sheet_3
   - first:
-      213: 294542835142117542
-    second: Farmer-Sheet_4
+      213: -3791507234282637975
+    second: Shotgun-Sheet_4
   - first:
-      213: -3723031287493477924
-    second: Farmer-Sheet_5
+      213: 366077757244805324
+    second: Shotgun-Sheet_5
   - first:
-      213: -7158230300216216456
-    second: Farmer-Sheet_6
+      213: -2528665525861737013
+    second: Shotgun-Sheet_6
   - first:
-      213: -3747212842015124307
-    second: Farmer-Sheet_7
+      213: 1272910841713695279
+    second: Shotgun-Sheet_7
   - first:
-      213: -7522471145768130173
-    second: Farmer-Sheet_8
+      213: 4483012816254597703
+    second: Shotgun-Sheet_8
   - first:
-      213: 5114161491835726569
-    second: Farmer-Sheet_9
+      213: -8151368841646471182
+    second: Shotgun-Sheet_9
   - first:
-      213: -4884046877558352411
-    second: Farmer-Sheet_10
+      213: 759487249696819060
+    second: Shotgun-Sheet_10
   - first:
-      213: 2527604944261976973
-    second: Farmer-Sheet_11
+      213: -7735426578995470920
+    second: Shotgun-Sheet_11
   - first:
-      213: 2872269850232705622
-    second: Farmer-Sheet_12
-  - first:
-      213: -1072978206936350652
-    second: Farmer-Sheet_13
-  - first:
-      213: 3079620954755617135
-    second: Farmer-Sheet_14
-  - first:
-      213: 2849868515624519155
-    second: Farmer-Sheet_15
+      213: -6541137864490588801
+    second: Shotgun-Sheet_12
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -94,7 +85,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 20
+  spritePixelsToUnits: 25
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -139,337 +130,274 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Farmer-Sheet_0
+      name: Shotgun-Sheet_0
       rect:
         serializedVersion: 2
         x: 0
-        y: 150
-        width: 26
-        height: 50
+        y: 26
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 98a67cfa32917b890800000000000000
-      internalID: -7442452218142823799
+      spriteID: 0f0e1ebe61ffd3000800000000000000
+      internalID: 17450447491162352
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_1
+      name: Shotgun-Sheet_1
       rect:
         serializedVersion: 2
-        x: 26
-        y: 150
-        width: 26
-        height: 50
+        x: 60
+        y: 26
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9db99a2c5bff4c200800000000000000
-      internalID: 199565439631203289
+      spriteID: beb61b710af093670800000000000000
+      internalID: 8518857350414691307
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_2
+      name: Shotgun-Sheet_2
       rect:
         serializedVersion: 2
-        x: 52
-        y: 150
-        width: 26
-        height: 50
+        x: 120
+        y: 26
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0638325afd20d3be0800000000000000
-      internalID: -1496036341645606048
+      spriteID: 59ec9879189b59680800000000000000
+      internalID: -8748882734853009771
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_3
+      name: Shotgun-Sheet_3
       rect:
         serializedVersion: 2
-        x: 78
-        y: 150
-        width: 26
-        height: 50
+        x: 180
+        y: 26
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4367e98ba1afa7e0800000000000000
-      internalID: -1752003971898711217
+      spriteID: 3c560d52a1ccb9640800000000000000
+      internalID: 5087884616720737731
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_4
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 100
-        width: 26
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 6a848c3e52d661400800000000000000
-      internalID: 294542835142117542
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farmer-Sheet_5
-      rect:
-        serializedVersion: 2
-        x: 26
-        y: 100
-        width: 26
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cd9394df4c2255cc0800000000000000
-      internalID: -3723031287493477924
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farmer-Sheet_6
-      rect:
-        serializedVersion: 2
-        x: 52
-        y: 100
-        width: 26
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 874bc27c77bd8ac90800000000000000
-      internalID: -7158230300216216456
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farmer-Sheet_7
-      rect:
-        serializedVersion: 2
-        x: 78
-        y: 100
-        width: 26
-        height: 50
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: da418e516c93ffbc0800000000000000
-      internalID: -3747212842015124307
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Farmer-Sheet_8
+      name: Shotgun-Sheet_4
       rect:
         serializedVersion: 2
         x: 0
-        y: 50
-        width: 26
-        height: 50
+        y: 13
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3896d534950da9790800000000000000
-      internalID: -7522471145768130173
+      spriteID: 9657249324cd16bc0800000000000000
+      internalID: -3791507234282637975
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_9
+      name: Shotgun-Sheet_5
       rect:
         serializedVersion: 2
-        x: 26
-        y: 50
-        width: 26
-        height: 50
+        x: 60
+        y: 13
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9eaa9d4e7c629f640800000000000000
-      internalID: 5114161491835726569
+      spriteID: cc09fb8d7c1941500800000000000000
+      internalID: 366077757244805324
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_10
+      name: Shotgun-Sheet_6
       rect:
         serializedVersion: 2
-        x: 52
-        y: 50
-        width: 26
-        height: 50
+        x: 120
+        y: 13
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5e557ccdd31683cb0800000000000000
-      internalID: -4884046877558352411
+      spriteID: bcd1c370a1068ecd0800000000000000
+      internalID: -2528665525861737013
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_11
+      name: Shotgun-Sheet_7
       rect:
         serializedVersion: 2
-        x: 78
-        y: 50
-        width: 26
-        height: 50
+        x: 180
+        y: 13
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8391431e4bd31320800000000000000
-      internalID: 2527604944261976973
+      spriteID: f2a96179aa94aa110800000000000000
+      internalID: 1272910841713695279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_12
+      name: Shotgun-Sheet_8
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 13
+        width: 60
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74af064876cd63e30800000000000000
+      internalID: 4483012816254597703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Shotgun-Sheet_9
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 26
-        height: 50
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6525f2af53a5cd720800000000000000
-      internalID: 2872269850232705622
+      spriteID: 2f78970f93580ee80800000000000000
+      internalID: -8151368841646471182
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_13
+      name: Shotgun-Sheet_10
       rect:
         serializedVersion: 2
-        x: 26
+        x: 60
         y: 0
-        width: 26
-        height: 50
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 440c2d371040c11f0800000000000000
-      internalID: -1072978206936350652
+      spriteID: 4770e9131ad3a8a00800000000000000
+      internalID: 759487249696819060
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_14
+      name: Shotgun-Sheet_11
       rect:
         serializedVersion: 2
-        x: 52
+        x: 120
         y: 0
-        width: 26
-        height: 50
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f61de0b11f20dba20800000000000000
-      internalID: 3079620954755617135
+      spriteID: 8bd1cdca28e36a490800000000000000
+      internalID: -7735426578995470920
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Farmer-Sheet_15
+      name: Shotgun-Sheet_12
       rect:
         serializedVersion: 2
-        x: 78
+        x: 180
         y: 0
-        width: 26
-        height: 50
+        width: 60
+        height: 13
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3f58e52d054cc8720800000000000000
-      internalID: 2849868515624519155
+      spriteID: f756e28c4c53935a0800000000000000
+      internalID: -6541137864490588801
       vertices: []
       indices: 
       edges: []

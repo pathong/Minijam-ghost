@@ -729,6 +729,7 @@ MonoBehaviour:
   _maxAngle: 15
   _bulletPrefab: {fileID: 8315213831094247180, guid: 7746148f20c454949b4b7c8ca47d4821, type: 3}
   shootSound: {fileID: 8300000, guid: 857e13957d17a074781d84f20553eea0, type: 3}
+  reloadSound: {fileID: 0}
   _maxShootCooldown: 1
   maxBulletAmount: 4
   isReloading: 0
@@ -745,6 +746,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Health: 4
+  currentHealth: 0
   TakeDmgSound: {fileID: 8300000, guid: b3ff18e4d5caab64fb2c583c405afdaf, type: 3}
 --- !u!1 &6484700390746750301
 GameObject:
