@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class HealthBarManager : MonoBehaviour
 {
-    [SerializeField] private SoundBar bar;
+    [SerializeField] private HeartBPSBar bar;
     [SerializeField] private HealthBarData[] datas;
     private HealthBarData data;
     [SerializeField] private PlayerHealth playerHealth;
