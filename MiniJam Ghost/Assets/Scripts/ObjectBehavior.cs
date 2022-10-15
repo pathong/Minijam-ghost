@@ -139,7 +139,7 @@ public class ObjectBehavior : ObjectInteraction
 
     IEnumerator Wait(GameObject lightBulbSprite)
     {
-        yield return new WaitForSeconds(countdown.GetComponent<Countdown>().time);
+        yield return new WaitForSeconds(countdown.GetComponent<Countdown>().setTime);
         lightBulbSprite.SetActive(true);
         noClick = false;
     }

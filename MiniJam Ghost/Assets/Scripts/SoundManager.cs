@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public static class SoundManager 
 {
@@ -14,5 +15,7 @@ public static class SoundManager
         audioSource.spatialBlend = 1f;
         audioSource.clip = clip;
         audioSource.Play();
+
+        UnityEngine.Object.Destroy(soundGameObject, 2);
     }
 }

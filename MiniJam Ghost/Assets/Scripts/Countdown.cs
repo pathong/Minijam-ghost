@@ -7,13 +7,15 @@ using TMPro;
 public class Countdown : MonoBehaviour
 {
     TextMeshPro tmp;
-    public float time = 5f;
+    public float setTime = 5f;
+    private float time = 0;
     public bool start = false;
     float count = 0;
 
     private void Start()
     {
         tmp = gameObject.GetComponent<TextMeshPro>();
+        time = setTime;
     }
 
     private void Update()
@@ -34,15 +36,15 @@ public class Countdown : MonoBehaviour
         {
             tmp.text = "Need Fixing";
             tmp.color = new Color(255, 0, 0, 0.5f);
-            time = 5f;
+            time = setTime;
             start = false;
             count++;
         }
         else
         {
-            tmp.text = "Completed";
+            tmp.text = "Running";
             tmp.color = new Color(0, 255, 0, 0.5f);
-            time = 5f;
+            time = setTime;
             start = false;
         }
     }

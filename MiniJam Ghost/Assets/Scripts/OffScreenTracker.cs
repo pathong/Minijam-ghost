@@ -27,9 +27,7 @@ public class OffScreenTracker : MonoBehaviour
             }
 
             if (target.GetComponent<ObjectBehavior>().used) gameObject.SetActive(false);
-        }
-
-        
+        }        
     }
 
     private void SetIndicatorActive(bool isActive)
