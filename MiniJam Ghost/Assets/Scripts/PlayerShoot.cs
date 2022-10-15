@@ -13,6 +13,7 @@ public class PlayerShoot : MonoBehaviour
 
     [Header("Shoot sound Test")]
     [SerializeField] private AudioClip shootSound;
+    [SerializeField] private AudioClip reloadSound;
 
 
     [SerializeField] private float _maxShootCooldown;
@@ -113,7 +114,7 @@ public class PlayerShoot : MonoBehaviour
         while(currentBulletAmount != maxBulletAmount)
         {
             yield return new WaitForSeconds(reloadTime);
-            Debug.Log("reload");
+            SoundManager.PlaySound(reloadSound);
             currentBulletAmount++;
         }
         isReloading = false;

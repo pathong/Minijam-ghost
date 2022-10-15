@@ -105,6 +105,7 @@ public abstract class Enemy : MonoBehaviour, IDamangable
         {
             float wait = 1f;
             SoundManager.PlaySound(walkSound, transform.position);
+            SoundGraphManager.TriggerSoundGraph(transform.position);
             yield return new WaitForSeconds(wait);
             
         }

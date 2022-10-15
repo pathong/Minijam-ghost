@@ -708,6 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animator: {fileID: 335201736}
   _moveSpeed: 200
+  walkSound: {fileID: 8300000, guid: dff9c4154b829df41a0ee505f445d14b, type: 3}
   rb: {fileID: 6484700390546897881}
   _knockbackForce: 0
 --- !u!114 &6484700390546897882
