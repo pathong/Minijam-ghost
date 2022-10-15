@@ -68,7 +68,8 @@ public class PlayerShoot : MonoBehaviour
 
         // test sound
         SoundManager.PlaySound(shootSound, transform.position);
-            
+
+        if (SoundGraphManager.soundGraphManager != null) { SoundGraphManager.TriggerSoundGraph(transform.position); } 
         // trigger flash
         Flash.Trigger();
 
