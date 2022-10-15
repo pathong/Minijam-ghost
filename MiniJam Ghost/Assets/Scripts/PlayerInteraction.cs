@@ -6,6 +6,8 @@ public class PlayerInteraction : MonoBehaviour
 {
     public GameObject interactionIcon;
 
+    [SerializeField] private LayerMask objectLayer;
+
     void Start()
     {
         interactionIcon.SetActive(false);
@@ -29,17 +31,13 @@ public class PlayerInteraction : MonoBehaviour
 
     private void CheckInteraction()
     {
-        RaycastHit2D[] hits = Physics2D.BoxCastAll(transform.position, new Vector2(0.1f, 1f), 0, Vector2.zero);
-
-        if(hits.Length > 0)
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, 1, objectLayer);
+        foreach (var col in hits)
         {
-            foreach (RaycastHit2D rc in hits)
+            if (col.transform.GetComponent<ObjectInteraction>())
             {
-                if (rc.transform.GetComponent<ObjectInteraction>())
-                {
-                    rc.transform.GetComponent<ObjectInteraction>().Interact();
-                    return;
-                }
+                col.transform.GetComponent<ObjectInteraction>().Interact();
+                return;
             }
         }
     }
