@@ -7,17 +7,25 @@ public class WeaponWheelController : MonoBehaviour
 {
     public Animator anim;
     private bool weaponWheelSelected = false;
-    public Image selectedItem;
     public Sprite noImage;
     public static int weaponID;
-    
-    // Update is called once per frame
-    void Update()
+
+
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Tab))
-        {
-            weaponWheelSelected = !weaponWheelSelected;
-        }
+        PlayerShoot.OnPlayerReload += Toggle; 
+    }
+
+    private void OnDisable()
+    {
+        PlayerShoot.OnPlayerReload -= Toggle; 
+        
+    }
+
+    // Update is called once per frame
+    void Toggle()
+    {
+        weaponWheelSelected = !weaponWheelSelected;
         if (weaponWheelSelected)
         {
             anim.SetBool("OpenWeaponWheel", true);
@@ -25,22 +33,6 @@ public class WeaponWheelController : MonoBehaviour
         else
         {
             anim.SetBool("OpenWeaponWheel", false);
-        }
-        switch (weaponID)
-        {
-            case 0:
-                selectedItem.sprite = noImage; 
-                break;
-            case 1:
-                Debug.Log("Normal");
-                break;
-            case 2:
-                Debug.Log("Fire");
-                break;
-            case 3:
-                Debug.Log("Light");
-                break;
-            
         }
     }
 }

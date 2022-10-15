@@ -6,48 +6,58 @@ public class WeaponWheelButtonController : MonoBehaviour
 {
 
     public int Id;
-    private Animator anim;
+    //private Animator anim;
     public string itemName;
     public TextMeshProUGUI itemText;
-    public Image selectedItem;
-    private bool selected = false;
-    public Sprite icon;
+    public Image Icon;
+    public TextMeshProUGUI bulletAmount;
+
+
+    public BulletSO bullet;
+    public MagazineSO magazine;
+
     // Start is called before the first frame update
     void Start()
     {
-        anim = GetComponent<Animator>();
+        //anim = GetComponent<Animator>();
+        Icon.sprite = bullet.sprite;
+        itemName = bullet.name;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (selected)
+        bulletAmount.text = bullet.CurrentAmount.ToString();
+        if(bullet.CurrentAmount <= 0)
         {
-            selectedItem.sprite = icon;
-            itemText.text = itemName;
+            this.GetComponent<Button>().interactable = false;
         }
-    }
-    public void Selected()
-    {
-        selected = true;
-        WeaponWheelController.weaponID = Id;
-    }
+        else
+        {
+            this.GetComponent<Button>().interactable = true;
+        }
 
-    public void DeSelected()
-    {
-        selected = false;
-        WeaponWheelController.weaponID = 0;
     }
 
     public void HoverEnter()
     {
-        anim.SetBool("Hover", true);
+        //anim.SetBool("Hover", true);
         itemText.text = itemName;
     }
 
     public void HoverExit()
     {
-        anim.SetBool("Hover", false);
+        //anim.SetBool("Hover", false);
         itemText.text = "";
+    }
+
+
+    public void OnClick()
+    {
+        if(magazine.GetEmptyIndex() == -1) { return; }
+        if(bullet.CurrentAmount <= 0) { return; }
+        magazine.AddBullet(bullet);
+        bullet.CurrentAmount--;
+
     }
 }

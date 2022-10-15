@@ -8,16 +8,10 @@ public class PlayerInventory : MonoBehaviour
 {
 
 
-    [SerializeField] private int amountNormalBullet;
-    [SerializeField] private int amountFireBullet;
-    [SerializeField] private int amountLightBullet;
+    [SerializeField] private BulletSO normalBullet;
+    [SerializeField] private BulletSO fireBullet;
+    [SerializeField] private BulletSO lightBullet;
 
-    private void Awake()
-    {
-        amountFireBullet = 0;
-        amountNormalBullet = 0;
-        amountLightBullet = 0;
-    }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -27,24 +21,19 @@ public class PlayerInventory : MonoBehaviour
             switch (item.BulletType)
             {
                 case (BulletType.Normal):
-                    amountNormalBullet++;
+                    normalBullet.CurrentAmount++;
                     break;
                 case (BulletType.Fire):
-                    amountLightBullet++;
+                    fireBullet.CurrentAmount++;
                     break;
                 case (BulletType.Light):
-                    amountFireBullet++;
+                    lightBullet.CurrentAmount++;
                     break;
             }
 
             Destroy(collision.gameObject);
         }
     }
-
-
-
-
-
 
 
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class PlayerShoot : MonoBehaviour
 {
     public Animator animator;
@@ -30,6 +31,7 @@ public class PlayerShoot : MonoBehaviour
 
 
     public bool isReloading;
+    public static System.Action OnPlayerReload;
 
 
 
@@ -106,31 +108,48 @@ public class PlayerShoot : MonoBehaviour
 
     public void Reload(InputAction.CallbackContext ctx)
     {
-        if(currentBulletAmount > 0) { return; }
-        if (isReloading) { return; }
-        isReloading = true;
-        this.GetComponent<PlayerMovement>().MoveSpeed /= 2;
 
-        // trigger gun animation
-        animator.SetBool("isReloading", true);
-
-        StartCoroutine(nameof(Reloading));
-    }
-
-    IEnumerator Reloading()
-    {
-        float reloadTime = 1f;
-        while(currentBulletAmount != maxBulletAmount)
+        if (!isReloading)
         {
-            yield return new WaitForSeconds(reloadTime);
-            SoundManager.PlaySound(reloadSound);
-            currentBulletAmount++;
-        }
-        isReloading = false;
-        animator.SetBool("isReloading", false);
+            if(magazine.GetFirstBullet() != -1) { return; }
 
-        this.GetComponent<PlayerMovement>().MoveSpeed *= 2;
+            isReloading = true;
+            this.GetComponent<PlayerMovement>().MoveSpeed /= 2;
+
+            // trigger gun animation
+            animator.SetBool("isReloading", true);
+            OnPlayerReload?.Invoke();
+
+            //StartCoroutine(nameof(Reloading));
+        }
+        else if (isReloading)
+        {
+
+            isReloading = false;
+            this.GetComponent<PlayerMovement>().MoveSpeed *= 2;
+
+            animator.SetBool("isReloading", false);
+            OnPlayerReload?.Invoke();
+        }
+
+
+        Debug.Log(isReloading);
     }
+
+    //IEnumerator Reloading()
+    //{
+    //    float reloadTime = 1f;
+    //    while(currentBulletAmount != maxBulletAmount)
+    //    {
+    //        yield return new WaitForSeconds(reloadTime);
+    //        SoundManager.PlaySound(reloadSound);
+    //        currentBulletAmount++;
+    //    }
+    //    isReloading = false;
+    //    animator.SetBool("isReloading", false);
+
+    //    this.GetComponent<PlayerMovement>().MoveSpeed *= 2;
+    //}
 
 
 

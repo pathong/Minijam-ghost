@@ -9,4 +9,5 @@ public class BulletSO : ScriptableObject
     public GameObject Prefab;
     public Sprite sprite;
     public string BulletName;
+    public int CurrentAmount;
 }

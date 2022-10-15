@@ -16,3 +16,4 @@ MonoBehaviour:
   Prefab: {fileID: 8315213831094247180, guid: 7746148f20c454949b4b7c8ca47d4821, type: 3}
   sprite: {fileID: 21300000, guid: fafe42b37bd123745bb285f0116792a6, type: 3}
   BulletName: EmptyBullet
+  CurrentAmount: 10
