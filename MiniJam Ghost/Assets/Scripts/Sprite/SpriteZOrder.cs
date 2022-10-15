@@ -70,6 +70,7 @@ public class SpriteZOrder : MonoBehaviour
 
         // adjust alpha
         AdjustAlphaUpdate();
+        Debug.Log(activateAlphaAdjustment);
     }
 
     void OnDrawGizmosSelected() {
@@ -88,6 +89,7 @@ public class SpriteZOrder : MonoBehaviour
     private void AdjustAlphaUpdate() {
         // check null and amount
         if (player != null && activateAlphaAdjustment) {
+            Debug.Log("c1");
             
             if (player.transform.position.y + playerOriginYOffset > transform.position.y + originOffsetY) {
                 // case player is behind
@@ -95,6 +97,7 @@ public class SpriteZOrder : MonoBehaviour
                 // check if the PlayerMovement component have BoxCollider2D with it to check for collision
                 BoxCollider2D collider = player.GetComponent<BoxCollider2D>();
                 if (collider == null) return;
+                Debug.Log("c2");
 
                 // get player's Bounds
                 Bounds b1 = collider.bounds;
@@ -116,6 +119,7 @@ public class SpriteZOrder : MonoBehaviour
                 if (collide) {
                     // if collide set transparentcy to all objects
                     SetAlphaFactor(alphaDecreaseFactor);
+                    Debug.Log("c3");
 
                     // then return so it don't continue to another case
                     return;
