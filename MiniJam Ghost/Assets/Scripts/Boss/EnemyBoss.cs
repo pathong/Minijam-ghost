@@ -13,15 +13,13 @@ public class EnemyBoss : MonoBehaviour, IDamangable
     private State currentState = State.Idle;
     private State nextState = State.Idle;
 
-    [SerializeField] protected float attackRange;
-    [SerializeField] private float attackTime = 1f;
     [SerializeField] private AudioClip walkSound;
 
     // setting
     [Header("Setting")]
     [SerializeField] private float soundDetectRange = 10f;    // Will go into State.Find if idle if sound is in this radius
     [SerializeField] private float visionRange = 5f;    // Will go into State.Stalk if see player in this range
-    [SerializeField] private float farRange = 20f;
+    [SerializeField] private float farRange = 15f;
     [SerializeField] private Vector2 detectionOffset;
     //[SerializeField] private LayerMask visionMask;
 
@@ -32,10 +30,33 @@ public class EnemyBoss : MonoBehaviour, IDamangable
 
     // ai
     private Vector2 interestPos;
-    [SerializeField] private bool canSeePlayer = false;
     [Header("Behavior Setting")]
     [SerializeField] private float wanderRadius;
-    [SerializeField] private float wanderTimer;
+    [Tooltip("If player has not come in the farRange within this time, next wandering will be close to the player")]
+    [SerializeField] private float farRangePatienceTime = 12;
+    [SerializeField] private float playerTimeInFarRange = 0;
+    [SerializeField] private float stalkDistance = 15;
+
+    private float initialAgentSpeed;
+    [Header("State move speed stting, based on agent's speed")]
+    [SerializeField] private float wanderSpeedFactor = 1;
+    [SerializeField] private float searchSpeedFactor = 1.3f;
+    [SerializeField] private float stalkInSpeedFactor = 0.7f;
+    [SerializeField] private float stalkOutSpeedFactor = 1.4f;
+    [SerializeField] private float chargeSpeedFactor = 2.1f;
+
+    private float playerSqrDist = 0;
+
+    [Header("Attack Setting")]
+    [SerializeField] private float attackRange = 3.2f;
+    [SerializeField] private float attackTime = 0.8f;
+    [SerializeField] private LayerMask playerLayer;
+
+    [Header("Damage til stun")]
+    [SerializeField] private int stunHealthMax = 2;
+    [SerializeField] private float timeTilRegen = 20;
+    [SerializeField] private int stunHealth = 0;
+    private float timeSinceStunned = 0;
 
     // references
     private NavMeshAgent agent;
@@ -60,32 +81,55 @@ public class EnemyBoss : MonoBehaviour, IDamangable
     }
 
     void Start() {
-        StopAllCoroutines();
-        StartCoroutine(IdleStateCR());
+        initialAgentSpeed = agent.speed;
+        stunHealth = stunHealthMax;
+
+        RestartCR();
         
         AnimatorMove(false);
         SyncLightning(0);
     }
 
+    void RestartCR() {
+        StopAllCoroutines();
+        StartCoroutine(PeriodicAttackCR());
+        StartNextState();
+    }
+
     // ----------------------Update-------------------------
     void Update() {
+        // update player sqr distance
+        PlayerSqrDistUpdate();
+
         // detect player in view
         VisionUpdate();
 
-        // if lightning, change from stalk or charge to wander
+        // update far range time
+        FarRangeUpdate();
 
-        // Debug
-        if (Input.GetKeyDown(KeyCode.K)) nextState = State.Wander;
+        // update flip sprite
+        FlipSpriteUpdate();
+
+        // update stun health
+        StunHealthUpdate();
+
+        // if lightning, change from stalk or charge to wander
+        // in sync lightning
+    }
+
+    void PlayerSqrDistUpdate() {
+        if (player == null) return;
+        
+        Vector2 _pos = (Vector2)transform.position + detectionOffset; // add offset
+        Vector2 deltaPos = (Vector2)player.position - _pos;
+        playerSqrDist = deltaPos.sqrMagnitude;
     }
     
     void VisionUpdate() {
-        canSeePlayer = false;
         if (player == null) return;
 
         // check if player is out of range
-        Vector2 _pos = (Vector2)transform.position + detectionOffset; // add offset
-        Vector2 deltaPos = (Vector2)player.position - _pos;
-        if (deltaPos.sqrMagnitude > Mathf.Pow(visionRange, 2)) return;
+        if (playerSqrDist > Mathf.Pow(visionRange, 2)) return;
         //Debug.Log("c1: player in range");
 
         /*
@@ -102,7 +146,35 @@ public class EnemyBoss : MonoBehaviour, IDamangable
 
         // if it can see player
         if ((int)currentState < 35) nextState = State.Stalk;
-        canSeePlayer = true;
+    }
+
+    void FarRangeUpdate() {
+        if (playerSqrDist > Mathf.Pow(farRange, 2)) {
+            playerTimeInFarRange += Time.deltaTime;
+        } else {
+            playerTimeInFarRange = 0;
+        }
+    }
+
+    void FlipSpriteUpdate() {
+        if (Mathf.Sign(agent.velocity.x) != Mathf.Sign(transform.localScale.x)) {
+            Vector3 _scale = transform.localScale;
+            _scale.x *= -1;
+            transform.localScale = _scale;
+        }
+    }
+
+    void StunHealthUpdate() {
+        timeSinceStunned += Time.deltaTime;
+        if (timeSinceStunned > timeTilRegen) {
+            stunHealth = stunHealthMax;
+        }
+
+        if (stunHealth <= 0) {
+            nextState = State.Stalk;
+            stunHealth = stunHealthMax;
+            RestartCR();
+        }
     }
 
     // ----------------------Static-------------------------
@@ -131,23 +203,48 @@ public class EnemyBoss : MonoBehaviour, IDamangable
             float bright = Mathf.Lerp(b.brightnessLerp.x, b.brightnessLerp.y, factor);
             float alpha = Mathf.Lerp(b.alphaLerp.x, b.alphaLerp.y, factor);
             s.color = new Color(bright, bright, bright, alpha);
+
+            // if lightning, change from stalk or charge to wander
+            if (factor >= 1 && (int)b.currentState > 25) {
+                // Debug.Log("set lightning state");
+                b.nextState = State.Wander;
+                b.RestartCR();
+            }
+        }
+    }
+
+    // ----------------------Damage-------------------------
+    private void Attack()
+    {
+        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, attackRange, playerLayer);
+        foreach (var col in hits)
+        {
+            // Debug.Log(col.name);
+            IDamangable damagable = col.GetComponent<IDamangable>();
+            if(damagable != null)
+            {
+                damagable.TakeDamage();
+            }
         }
     }
 
     public void TakeDamage() {
-        
+        stunHealth -= 1;
     }
 
-    // IEnumerator IdleStateCR() {
-
-    // }
+    IEnumerator PeriodicAttackCR() {
+        while (true) {
+            Attack();
+            yield return new WaitForSeconds(attackTime);
+        }
+    }
 
     // ----------------------State Machine-------------------------
     IEnumerator IdleStateCR() {
         currentState = State.Idle;
         AnimatorMove(false, 1.25f);
 
-        yield return new WaitForSeconds(Random.Range(0.4f, 2f));
+        yield return new WaitForSeconds(Random.Range(0.3f, 1.6f));
 
         ModifyNextState();
         StartNextState();
@@ -155,12 +252,19 @@ public class EnemyBoss : MonoBehaviour, IDamangable
 
     IEnumerator WanderStateCR() {
         currentState = State.Wander;
-        AnimatorMove(true);
+        agent.speed = initialAgentSpeed * wanderSpeedFactor;
+        AnimatorMove(true, wanderSpeedFactor);
 
-        Vector3 newPos = RandomNavCircle(transform.position, wanderRadius, -1);
+        // random point to go to, unless player is far for too long, then it wander close to player
+        Vector3 origin = transform.position;
+        if (playerTimeInFarRange > farRangePatienceTime && player != null) {
+            // if player has been far away for too long
+            // set random destination based on player position instead
+            origin = player.position;
+        }
+        Vector3 newPos = RandomNavCircle(origin, wanderRadius, -1);
         agent.SetDestination(newPos);
-        Debug.Log(newPos);
-        yield return new WaitForSeconds(Random.Range(5f, 6f));
+        yield return new WaitForSeconds(Random.Range(1.5f, 2.7f));
 
         ModifyNextState();
         StartNextState();
@@ -168,12 +272,14 @@ public class EnemyBoss : MonoBehaviour, IDamangable
 
     IEnumerator SearchStateCR() {
         currentState = State.Search;
-        AnimatorMove(true, 1.25f);
+        agent.speed = initialAgentSpeed * searchSpeedFactor;
+        AnimatorMove(true, searchSpeedFactor);
         
-        yield return new WaitForSeconds(Random.Range(5f, 5f));
         // go to interestPos
         // wait
         // wander
+        agent.SetDestination(interestPos);
+        yield return new WaitForSeconds(Random.Range(1.4f, 2f));
         
         ModifyNextState();
         StartNextState();
@@ -181,10 +287,39 @@ public class EnemyBoss : MonoBehaviour, IDamangable
 
     IEnumerator StalkStateCR() {
         currentState = State.Stalk;
-        AnimatorMove(true);
 
-        yield return new WaitForSeconds(Random.Range(0.4f, 2f));
+        // check if player is null
+        if (player == null) nextState = State.Wander;
+
+        // timer
+        float timer = Random.Range(2f, 4f);
+
         // keep distance but follow
+        // if player is in soundDetectRange move away;
+        // else move closer
+        while (true && player != null) {
+            float loopTime = Random.Range(.4f, .7f);
+            if (timer < 0) break;
+            if (playerSqrDist < Mathf.Pow(stalkDistance, 2)) {
+                // move away
+                agent.speed = initialAgentSpeed * stalkOutSpeedFactor;
+                AnimatorMove(true, stalkOutSpeedFactor);
+
+                Vector3 newPos = transform.position - player.position;
+                newPos = newPos.normalized;
+                newPos *= stalkDistance * 1.25f;
+                agent.SetDestination(newPos);
+            } else {
+                // move closer
+                agent.speed = initialAgentSpeed * stalkInSpeedFactor;
+                AnimatorMove(true, stalkInSpeedFactor);
+
+                Vector3 newPos = RandomNavCircle(player.position, soundDetectRange, -1);
+                agent.SetDestination(newPos);
+            }
+            yield return new WaitForSeconds(loopTime);
+            timer -= loopTime;
+        }
 
         ModifyNextState();
         StartNextState();
@@ -192,10 +327,24 @@ public class EnemyBoss : MonoBehaviour, IDamangable
 
     IEnumerator ChargeStateCR() {
         currentState = State.Charge;
-        AnimatorMove(true, 2);
+        agent.speed = initialAgentSpeed * chargeSpeedFactor;
+        AnimatorMove(true, chargeSpeedFactor);
 
-        yield return new WaitForSeconds(Random.Range(2f, 2f));
         // tatakaeeeeeeeeeeee
+        if (player != null) {
+            // get newPos close to player
+            Vector3 origin = player.position;
+            Vector3 newPos = RandomNavCircle(origin, 2, -1);
+
+            // extend that so it run pass the player
+            Vector3 delta = (newPos - transform.position);
+            delta *= 1.7f;
+            newPos = transform.position + delta;
+
+            agent.SetDestination(newPos);
+            yield return new WaitForSeconds(Random.Range(3f, 4f));
+        }
+        // if player is null skip
 
         ModifyNextState();
         StartNextState();
@@ -216,20 +365,19 @@ public class EnemyBoss : MonoBehaviour, IDamangable
                 nextState = State.Wander;
                 break;
             case State.Stalk:
-                if (rand < 0.2f) nextState = State.Charge;
+                if (rand < 0.35f) nextState = State.Charge;
                 break;
             case State.Charge:
                 nextState = State.Stalk;
                 break;
             } 
-            Debug.Log("BossState: " + currentState + " -> " + nextState);
+            // Debug.Log("BossState: " + currentState + " -> " + nextState);
         }
         // else, something already assign the next state
     }
 
     void StartNextState() {
-        StopAllCoroutines();
-        Debug.Log("BossState: >" + nextState);
+        // Debug.Log("BossState: >" + nextState);
         switch(nextState) {
             case State.Idle:
                 StartCoroutine(IdleStateCR());
@@ -254,13 +402,13 @@ public class EnemyBoss : MonoBehaviour, IDamangable
     Vector3 RandomNavCircle(Vector3 origin, float dist, int layermask) {
         Vector3 randDirection = Random.insideUnitCircle * dist;
 
-        randDirection += origin;
+            randDirection += origin;
 
-        NavMeshHit navHit;
+            NavMeshHit navHit;
 
-        NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
+            NavMesh.SamplePosition (randDirection, out navHit, dist, layermask);
 
-        return navHit.position;
+            return navHit.position;
     }
 
     // ----------------------Animator-------------------------
@@ -284,6 +432,8 @@ public class EnemyBoss : MonoBehaviour, IDamangable
         Gizmos.DrawWireSphere(pos, soundDetectRange);
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(pos, visionRange);
+        Gizmos.color = Color.grey;
+        Gizmos.DrawWireSphere(pos, farRange);
     }
     
 
