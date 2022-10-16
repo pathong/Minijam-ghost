@@ -72,7 +72,6 @@ public abstract class Enemy : MonoBehaviour, IDamangable
     protected virtual void Attack()
     {
         // attack (start animation)
-        Debug.Log("Attack!");
         
     }
 
@@ -115,7 +114,7 @@ public abstract class Enemy : MonoBehaviour, IDamangable
         while(currentState == EnemyState.Chasing)
         {
             float wait = 1f;
-            SoundManager.PlaySound(walkSound, transform.position);
+            SoundManager.PlaySound(walkSound, transform.position, .5f);
             SoundGraphManager.TriggerSoundGraph(transform.position);
             yield return new WaitForSeconds(wait);
             

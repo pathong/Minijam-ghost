@@ -120,7 +120,7 @@ public class PlayerShoot : MonoBehaviour
             animator.SetBool("isReloading", true);
             OnPlayerReload?.Invoke();
 
-            SoundManager.PlaySound(reloadSound);
+            SoundManager.PlaySound(reloadSound,transform.position);
 
             //StartCoroutine(nameof(Reloading));
         }
@@ -133,7 +133,7 @@ public class PlayerShoot : MonoBehaviour
             animator.SetBool("isReloading", false);
             OnPlayerReload?.Invoke();
 
-            SoundManager.PlaySound(reloadSound);
+            SoundManager.PlaySound(reloadSound,transform.position);
         }
 
 

@@ -11,7 +11,11 @@ public class WaveSpawn : MonoBehaviour
     private Transform player;
 
 
-    public Vector2 distance;
+    public float distance;
+    public float distanceFromPlayer;
+
+
+    public Vector2 MinMaxIntervalSpawnTime;
 
     private void Awake()
     {
@@ -20,8 +24,7 @@ public class WaveSpawn : MonoBehaviour
 
     private void Start()
     {
-
-        NormalSpawn();
+        StartCoroutine(IntervalSpawn());
     }
 
 
@@ -29,31 +32,51 @@ public class WaveSpawn : MonoBehaviour
     public void NormalSpawn()
     {
         Instantiate(monsTest, GetSpawnPoint(), Quaternion.identity);
-        
     }
 
-
+    IEnumerator IntervalSpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(MinMaxIntervalSpawnTime.x, MinMaxIntervalSpawnTime.y));
+            NormalSpawn();
+        }
+    }
 
     public Vector2 GetSpawnPoint()
     {
-        player =  Extension.GetPlayer();
-
-        float x = Random.Range(distance.x, distance.y);
-        float y = Random.Range(distance.x, distance.y);
-
-        Vector2 pos = (Vector2)player.position + new Vector2(x, y);
-        if(groundTilemap.GetTile((Vector3Int)Vector2Int.RoundToInt(pos)) == null)
+        while (true)
         {
-            Debug.Log("null");
-            GetSpawnPoint();
+            player =  Extension.GetPlayer();
+
+            float x = Random.Range(-distance, distance);
+            float y = Random.Range(-distance, distance);
+
+            Vector2 pos = (Vector2)player.position + new Vector2(x, y);
+            Vector3Int loc = groundTilemap.WorldToCell(pos);
+            if (groundTilemap.GetTile(loc) && Vector2.Distance(player.position, pos) >= distanceFromPlayer)
+            {
+                return pos;
+            }
         }
-
-
-        return pos;
-
-
-
             
+    }
+
+
+    public static void SpawnWave(int amount)
+    {
+        for (int i = 0; i < amount; i++)
+        {
+            waveSpawn.NormalSpawn();
+        }
+        
+    }
+
+    [ContextMenu("SpawnInWave")]
+    public void SpawnWaveTest()
+    {
+        SpawnWave(5);
+
     }
 
 
