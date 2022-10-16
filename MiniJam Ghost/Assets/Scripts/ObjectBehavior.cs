@@ -23,8 +23,6 @@ public class ObjectBehavior : ObjectInteraction
     [SerializeField] private bool Timed;
     [SerializeField] private GameObject[] visits;
     [SerializeField] private GameObject[] lights;
-    [SerializeField] private AudioClip InteractSound;
-    [SerializeField] private AudioClip DoneSound;
     private bool tick1 = false;
     private bool tick2 = false;
     private bool noClick = false;
@@ -46,8 +44,6 @@ public class ObjectBehavior : ObjectInteraction
                     lights[x].SetActive(true);
             }
             isActive = !isActive;
-
-            SoundManager.PlaySound(InteractSound, transform.position);
         }
         else if (OnOnly & interactIcon & !used)
         {
@@ -57,8 +53,6 @@ public class ObjectBehavior : ObjectInteraction
             playerCharacter.GetComponent<PlayerInteraction>().CloseInteractionIcon();
             interactIcon = !interactIcon;
             used = true;
-
-            SoundManager.PlaySound(InteractSound, transform.position);
         }
         else if (Sequence & interactIcon & !used)
         {
@@ -74,13 +68,9 @@ public class ObjectBehavior : ObjectInteraction
                 {
                     visits[x].SetActive(true);
                 }
-                for (int x = 0; x < lights.Length; x++)
-                    lights[x].SetActive(true);
                 task = true;
             }
             used = true;
-
-            SoundManager.PlaySound(InteractSound, transform.position);
         }
         else if (Timed & interactIcon & !used)
         {
@@ -93,8 +83,6 @@ public class ObjectBehavior : ObjectInteraction
 
             if (!tick1 & !tick2)
             {
-                SoundManager.PlaySound(InteractSound, transform.position);
-
                 StartCoroutine(Wait(lights[0]));
                 countdown.GetComponent<Countdown>().start = true;
                 isActive = false;
@@ -106,8 +94,6 @@ public class ObjectBehavior : ObjectInteraction
             }
             else if (tick1 & !tick2 & !noClick)
             {
-                SoundManager.PlaySound(InteractSound, transform.position);
-
                 StartCoroutine(Wait(lights[1]));
                 countdown.GetComponent<Countdown>().start = true;
                 isActive = false;
@@ -119,8 +105,6 @@ public class ObjectBehavior : ObjectInteraction
             }
             else if (tick1 & tick2 & !noClick)
             {
-                SoundManager.PlaySound(DoneSound, transform.position);
-
                 StartCoroutine(Wait(lights[2]));
                 countdown.GetComponent<Countdown>().start = true;
                 isActive = false;
