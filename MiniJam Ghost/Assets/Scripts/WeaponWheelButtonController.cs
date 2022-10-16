@@ -16,8 +16,6 @@ public class WeaponWheelButtonController : MonoBehaviour
     public BulletSO bullet;
     public MagazineSO magazine;
 
-    [SerializeField] private AudioClip shellSound;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -60,7 +58,6 @@ public class WeaponWheelButtonController : MonoBehaviour
         if(bullet.CurrentAmount <= 0) { return; }
         magazine.AddBullet(bullet);
         bullet.CurrentAmount--;
-        SoundManager.PlaySound(shellSound);
 
     }
 }

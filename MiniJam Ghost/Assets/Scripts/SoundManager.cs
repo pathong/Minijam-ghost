@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public static class SoundManager
+public static class SoundManager 
 {
 
     public static void PlaySound(AudioClip clip, Vector3? position = null)
@@ -19,4 +19,3 @@ public static class SoundManager
         UnityEngine.Object.Destroy(soundGameObject, 2);
     }
 }
-

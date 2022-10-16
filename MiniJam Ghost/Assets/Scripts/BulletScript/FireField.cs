@@ -10,12 +10,6 @@ public class FireField : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
 
 
-    private void Start()
-    {
-        StartCoroutine(waitToDestroy());
-        StartCoroutine(DoDamage());
-    }
-
 
     IEnumerator waitToDestroy()
     {

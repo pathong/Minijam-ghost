@@ -16,7 +16,7 @@ public class PlayerShoot : MonoBehaviour
 
     [Header("Shoot sound Test")]
     [SerializeField] private AudioClip shootSound;
-    [SerializeField] private AudioClip finishReloadSound;
+    [SerializeField] private AudioClip reloadSound;
 
 
     [SerializeField] private float _maxShootCooldown;
@@ -120,8 +120,6 @@ public class PlayerShoot : MonoBehaviour
             animator.SetBool("isReloading", true);
             OnPlayerReload?.Invoke();
 
-            SoundManager.PlaySound(finishReloadSound);
-
             //StartCoroutine(nameof(Reloading));
         }
         else if (isReloading)
@@ -132,10 +130,10 @@ public class PlayerShoot : MonoBehaviour
 
             animator.SetBool("isReloading", false);
             OnPlayerReload?.Invoke();
-            SoundManager.PlaySound(finishReloadSound);
         }
 
 
+        Debug.Log(isReloading);
     }
 
     //IEnumerator Reloading()
