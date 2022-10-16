@@ -127,7 +127,7 @@ public class InGameMenu : MonoBehaviour
             Color c = blackPanel.color;
             c.a = val;
             blackPanel.color = c; 
-        });
+        }).setOnComplete(()=> InputManager.Controls.Enable());
         
     }
 

@@ -132,7 +132,7 @@ public class ObjectBehavior : ObjectInteraction
         }
     }
 
-    private void Start()
+    private void Awake()
     {
         sr = GetComponent<SpriteRenderer>();
         sr.sprite = inactive;
