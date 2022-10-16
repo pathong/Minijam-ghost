@@ -74,6 +74,8 @@ public class PlayerShoot : MonoBehaviour
         if (SoundGraphManager.soundGraphManager != null) { SoundGraphManager.TriggerSoundGraph(transform.position); } 
         // trigger flash
         Flash.Trigger();
+        // send sound location
+        EnemyBoss.SendTargetSoundLocation(transform.position);
         // trigger gun animation
         animator.SetTrigger("Shoot");
         GameObject bullet = magazine.GetandShoot();
