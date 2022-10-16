@@ -210,12 +210,14 @@ public class EnemyBoss : MonoBehaviour, IDamangable
             float alpha = Mathf.Lerp(b.alphaLerp.x, b.alphaLerp.y, factor);
             s.color = new Color(bright, bright, bright, alpha);
 
+            /*
             // if lightning, change from stalk or charge to wander
             if (factor >= 1 && (int)b.currentState > 25) {
                 // Debug.Log("set lightning state");
                 b.nextState = State.Wander;
                 b.RestartCR();
             }
+            */
         }
     }
 
