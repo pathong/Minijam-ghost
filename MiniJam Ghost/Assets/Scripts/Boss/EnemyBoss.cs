@@ -13,8 +13,6 @@ public class EnemyBoss : MonoBehaviour, IDamangable
     private State currentState = State.Idle;
     private State nextState = State.Idle;
 
-    [SerializeField] private AudioClip walkSound;
-
     // setting
     [Header("Setting")]
     [SerializeField] private float soundDetectRange = 10f;    // Will go into State.Find if idle if sound is in this radius
@@ -58,6 +56,13 @@ public class EnemyBoss : MonoBehaviour, IDamangable
     [SerializeField] private int stunHealth = 0;
     private float timeSinceStunned = 0;
 
+    [Header("Sound")]
+    [SerializeField] private AudioClip[] walkSounds;
+    [SerializeField] private AudioClip[] crySounds;
+    [SerializeField] private AudioClip[] hurtSounds;
+    private float walkSoundFrequencyFactor = 1;
+    private bool walkSoundEnable = false;
+
     // references
     private NavMeshAgent agent;
     private Animator animator;
@@ -93,6 +98,7 @@ public class EnemyBoss : MonoBehaviour, IDamangable
     void RestartCR() {
         StopAllCoroutines();
         StartCoroutine(PeriodicAttackCR());
+        StartCoroutine(WalkSoundCR());
         StartNextState();
     }
 
@@ -230,6 +236,8 @@ public class EnemyBoss : MonoBehaviour, IDamangable
 
     public void TakeDamage() {
         stunHealth -= 1;
+
+        PlaySound(hurtSounds);
     }
 
     IEnumerator PeriodicAttackCR() {
@@ -331,6 +339,7 @@ public class EnemyBoss : MonoBehaviour, IDamangable
         AnimatorMove(true, chargeSpeedFactor);
 
         // tatakaeeeeeeeeeeee
+        PlaySound(crySounds);
         if (player != null) {
             // get newPos close to player
             Vector3 origin = player.position;
@@ -421,6 +430,8 @@ public class EnemyBoss : MonoBehaviour, IDamangable
         animator.speed = speed;
         decoyAnimator.SetBool("isMoving", isMoving);
         decoyAnimator.speed = speed;
+        walkSoundEnable = isMoving;
+        walkSoundFrequencyFactor = speed;
     }
 
     // ----------------------Gizmos-------------------------
@@ -435,7 +446,20 @@ public class EnemyBoss : MonoBehaviour, IDamangable
         Gizmos.color = Color.grey;
         Gizmos.DrawWireSphere(pos, farRange);
     }
-    
+
+    // ----------------------Sound-------------------------
+    void PlaySound(AudioClip[] sounds) {
+        if (sounds == null || sounds.Length <= 0) return;
+        SoundManager.PlaySound(SoundUtil.RandSound(sounds), transform.position);
+    }
+
+    IEnumerator WalkSoundCR() {
+        while(true) {
+            if (walkSoundEnable) PlaySound(walkSounds);
+            SoundGraphManager.TriggerSoundGraph(transform.position);
+            yield return new WaitForSeconds(0.7f * (1 / walkSoundFrequencyFactor));
+        }
+    }
 
     // ----------------------Enable and Disable-------------------------
     void OnEnable() => instances.Add(this);
