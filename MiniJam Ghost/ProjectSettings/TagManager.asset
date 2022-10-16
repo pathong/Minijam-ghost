@@ -6,11 +6,12 @@ TagManager:
   tags:
   - bullet
   - Item
+  - GroundTileMap
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - GroundTile
   - Water
   - UI
   - Bullet
