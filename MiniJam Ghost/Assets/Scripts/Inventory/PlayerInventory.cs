@@ -15,6 +15,8 @@ public class PlayerInventory : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        ProgressManager.i.IncreaseProgress();
+        WaveSpawn.SpawnNormal();
         if(collision.tag == "Item")
         {
             ItemOnGround item =  collision.GetComponent<ItemOnGround>();
