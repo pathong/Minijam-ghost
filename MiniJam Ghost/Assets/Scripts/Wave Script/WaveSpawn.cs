@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
-using GD.MinMaxSlider;
 
 public class WaveSpawn : MonoBehaviour
 {
@@ -12,7 +11,6 @@ public class WaveSpawn : MonoBehaviour
     private Transform player;
 
 
-    [MinMaxSlider(0, 20)]
     public Vector2 distance;
 
     private void Awake()
