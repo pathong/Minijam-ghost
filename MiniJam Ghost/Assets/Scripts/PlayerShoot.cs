@@ -37,17 +37,12 @@ public class PlayerShoot : MonoBehaviour
 
     private void OnEnable()
     {
-        playerAction = new PlayerAction();
-        playerAction.Enable();
-        playerAction.Movement.Shoot.performed += Shoot;
-        playerAction.Movement.Reload.performed += Reload;
+        //playerAction = new PlayerAction();
+        //playerAction.Enable();
+        InputManager.Controls.Movement.Shoot.performed += Shoot;
+        InputManager.Controls.Movement.Reload.performed += Reload;
     }
 
-    private void OnDisable()
-    {
-        playerAction.Disable();
-        playerAction.Movement.Shoot.performed -= Shoot;
-    }
 
 
     private void Awake()
