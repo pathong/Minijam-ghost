@@ -134,8 +134,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2720642565771965580}
   - component: {fileID: 2720642565771965619}
-  - component: {fileID: 4174058333297623053}
   - component: {fileID: 1509510344196430273}
+  - component: {fileID: 5495591602311400836}
   m_Layer: 0
   m_Name: LamppostB
   m_TagString: Untagged
@@ -209,19 +209,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!65 &4174058333297623053
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2720642565771965617}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.34661698, y: 0.4847641, z: 0.2}
-  m_Center: {x: 0.3266915, y: -1.5576181, z: 0}
 --- !u!114 &1509510344196430273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -247,7 +234,33 @@ MonoBehaviour:
   - {x: 0.13329124, y: -1.3099031, z: 0}
   m_ShapePathHash: 293797365
   m_Mesh: {fileID: 0}
-  m_InstanceId: 39844
+  m_InstanceId: 58422
+--- !u!61 &5495591602311400836
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2720642565771965617}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.30319536, y: -1.5257574}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 3.6}
+    newSize: {x: 1, y: 3.6}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.3936093, y: 0.54848504}
+  m_EdgeRadius: 0
 --- !u!1 &6580218975288286246
 GameObject:
   m_ObjectHideFlags: 0
@@ -347,7 +360,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.32691908, y: -1.4547327}
+  m_Offset: {x: 0.31976962, y: -1.4976289}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -358,7 +371,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6000948, y: 1.1571069}
+  m_Size: {x: 1.5295186, y: 1.671864}
   m_EdgeRadius: 0
 --- !u!114 &6580218975288286234
 MonoBehaviour:
