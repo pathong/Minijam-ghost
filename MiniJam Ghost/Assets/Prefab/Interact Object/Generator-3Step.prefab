@@ -537,6 +537,8 @@ MonoBehaviour:
   - {fileID: 708784369}
   - {fileID: 1138385451}
   - {fileID: 631661984}
+  InteractSound: {fileID: 8300000, guid: dde147b5c1da662429785f358c291753, type: 3}
+  DoneSound: {fileID: 8300000, guid: df5d2161929821f47b05cc5cc43ab720, type: 3}
 --- !u!114 &4578212916332928732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -582,7 +584,7 @@ MonoBehaviour:
   - {x: -1.4185483, y: 1.3263884, z: 0}
   m_ShapePathHash: -1354382685
   m_Mesh: {fileID: 0}
-  m_InstanceId: 54474
+  m_InstanceId: 128444
 --- !u!114 &3469868242076726591
 MonoBehaviour:
   m_ObjectHideFlags: 0
