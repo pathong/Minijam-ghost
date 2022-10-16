@@ -56,7 +56,7 @@ public class ObjectBehavior : ObjectInteraction
             task = false;
             if (!task)
             {
-                for (int x = 0; x < 2; x++)
+                for (int x = 0; x < visits.Length; x++)
                 {
                     visits[x].SetActive(true);
                 }
@@ -116,15 +116,24 @@ public class ObjectBehavior : ObjectInteraction
 
         if (Sequence)
         {
-            for (int x = 0; x < 2; x++)
+            for (int x = 0; x < visits.Length; x++)
             {
                 visits[x].SetActive(false);
+                if (visits[x].GetComponent<ObjectBehavior>().Timed)
+                {
+                    print("yaa");
+                    for (int y = 0; y < visits[x].GetComponent<ObjectBehavior>().lights.Length; y++)
+                    {
+                        print("yee");
+                        visits[x].GetComponent<ObjectBehavior>().lights[y].SetActive(false);
+                    }
+                }
             }
         }
 
         if (Timed)
         {
-            for (int x = 0; x < 3; x++)
+            for (int x = 0; x < lights.Length; x++)
             {
                 lights[x].SetActive(false);
             }
