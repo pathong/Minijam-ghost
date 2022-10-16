@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         rb.velocity = _dir * _moveSpeed * Time.deltaTime;
+        animator.SetFloat("SpeedX", _dir.x);
         animator.SetFloat("SpeedY", _dir.y);
 
         if(_dir.x < 0 && isFacingRight)
