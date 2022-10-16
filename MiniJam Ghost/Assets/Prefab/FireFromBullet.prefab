@@ -98,9 +98,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6ae50e29be182840abe625ad6d421d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  radius: 5
-  timePeriod: 0.1
-  lifeTime: 5
+  radius: 2
+  timePeriod: 0.5
+  lifeTime: 10
   enemyLayer:
     serializedVersion: 2
     m_Bits: 128

@@ -16,4 +16,4 @@ MonoBehaviour:
   Prefab: {fileID: 8639595762402815204, guid: 19f7ab93e998dab49bfacbb0a048c8ed, type: 3}
   sprite: {fileID: 21300000, guid: e2e88d62eee7acc40943905be7499d84, type: 3}
   BulletName: Light Bullet
-  CurrentAmount: 4
+  CurrentAmount: 0
