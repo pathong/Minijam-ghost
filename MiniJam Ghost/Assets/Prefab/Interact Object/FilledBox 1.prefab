@@ -129,7 +129,7 @@ MonoBehaviour:
   interactIcon: 1
   task: 1
   OnOff: 0
-  OnOnly: 1
+  OnOnly: 0
   Sequence: 0
   Timed: 0
   visits: []

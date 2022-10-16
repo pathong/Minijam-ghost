@@ -21,6 +21,7 @@ public class ObjectBehavior : ObjectInteraction
     [SerializeField] private bool OnOnly;
     [SerializeField] private bool Sequence;
     [SerializeField] private bool Timed;
+    [SerializeField] private bool SpawnTrigger;
     [SerializeField] private GameObject[] visits;
     [SerializeField] private GameObject[] lights;
     [SerializeField] private AudioClip InteractSound;
@@ -31,6 +32,10 @@ public class ObjectBehavior : ObjectInteraction
 
     public override void Interact()
     {
+        if (SpawnTrigger)
+        {
+            WaveSpawn.SpawnNormal();
+        }
         if (OnOff)
         {
             if (isActive)
