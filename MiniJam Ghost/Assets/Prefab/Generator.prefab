@@ -713,5 +713,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13c30b71f5483d4abe2e7d2fa77b157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  time: 5
+  setTime: 5
   start: 0
