@@ -1018,7 +1018,12 @@ MonoBehaviour:
   animator: {fileID: 335201736}
   sprite: {fileID: 1221569803}
   _moveSpeed: 200
-  walkSound: {fileID: 8300000, guid: dff9c4154b829df41a0ee505f445d14b, type: 3}
+  walkSounds:
+  - {fileID: 8300000, guid: e119777e577e4d24c9f0cdde4dd74c80, type: 3}
+  - {fileID: 8300000, guid: 5a5be17d9522c554bae77f01aa462c25, type: 3}
+  - {fileID: 8300000, guid: 41df3b53bd605ba499739edd61e36ddf, type: 3}
+  - {fileID: 8300000, guid: 5912349f777e40a488223ce4571ce837, type: 3}
+  - {fileID: 8300000, guid: 2469366c9cb9c7145b9bf26be07e2999, type: 3}
   gunRend: {fileID: 6484700390334958395}
   rb: {fileID: 6484700390546897881}
   _knockbackForce: 0
@@ -1060,7 +1065,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Health: 4
   currentHealth: 0
-  TakeDmgSound: {fileID: 8300000, guid: b3ff18e4d5caab64fb2c583c405afdaf, type: 3}
+  takeDmgSounds:
+  - {fileID: 8300000, guid: b3ff18e4d5caab64fb2c583c405afdaf, type: 3}
+  - {fileID: 8300000, guid: 615c863d520f6c44cb2dc037f46d02c0, type: 3}
+  - {fileID: 8300000, guid: 8359bd7f9b4a0ea48814650f468559cd, type: 3}
   healTime: 20
   currentHealTime: 20
 --- !u!114 &19055078
@@ -1094,6 +1102,7 @@ MonoBehaviour:
   normalBullet: {fileID: 11400000, guid: 761ec13e47129ee4d9059173759a5eee, type: 2}
   fireBullet: {fileID: 11400000, guid: 19054c2a5c2c27140b00f0ca554ddf4d, type: 2}
   lightBullet: {fileID: 11400000, guid: c550298a7a2f5104d98202b7c7f9fd2d, type: 2}
+  collectSound: {fileID: 8300000, guid: 02677735f7919d64fb83133411bc80fa, type: 3}
 --- !u!1 &6484700390746750301
 GameObject:
   m_ObjectHideFlags: 0

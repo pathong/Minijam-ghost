@@ -50,6 +50,7 @@ public class PlayerShoot : MonoBehaviour
         _shootCooldown = _maxShootCooldown;
         currentBulletAmount = maxBulletAmount;
         isReloading = false;
+        Debug.Log(this.name);
     }
 
     private void Update()
@@ -69,9 +70,9 @@ public class PlayerShoot : MonoBehaviour
         Quaternion newRot = _gunPivot.rotation;
 
         // test sound
-        SoundManager.PlaySound(shootSound, transform.position);
+        SoundManager.PlaySound(shootSound, this.transform.position);
 
-        if (SoundGraphManager.soundGraphManager != null) { SoundGraphManager.TriggerSoundGraph(transform.position); } 
+        if (SoundGraphManager.soundGraphManager != null) { SoundGraphManager.TriggerSoundGraph(this.transform.position); }
         // trigger flash
         Flash.Trigger();
         // trigger gun animation
@@ -90,7 +91,7 @@ public class PlayerShoot : MonoBehaviour
             GameObject SpawnedBullet =  Instantiate(bullet, _gunTip.position, newRot);
 
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            SpawnedBullet.GetComponent<BulletBehaviour>().SetDistance(Vector2.Distance(mousePos, transform.position));
+            SpawnedBullet.GetComponent<BulletBehaviour>().SetDistance(Vector2.Distance(mousePos, this.transform.position));
 
         }
 
@@ -109,13 +110,13 @@ public class PlayerShoot : MonoBehaviour
             if(magazine.GetFirstBullet() != -1) { return; }
 
             isReloading = true;
-            this.GetComponent<PlayerMovement>().MoveSpeed /= 2;
+            this.gameObject.GetComponent<PlayerMovement>().MoveSpeed /= 2;
 
             // trigger gun animation
             animator.SetBool("isReloading", true);
             OnPlayerReload?.Invoke();
 
-            SoundManager.PlaySound(reloadSound,transform.position);
+            SoundManager.PlaySound(reloadSound,this.transform.position);
 
             //StartCoroutine(nameof(Reloading));
         }
@@ -123,12 +124,12 @@ public class PlayerShoot : MonoBehaviour
         {
 
             isReloading = false;
-            this.GetComponent<PlayerMovement>().MoveSpeed *= 2;
+            this.gameObject.GetComponent<PlayerMovement>().MoveSpeed *= 2;
 
             animator.SetBool("isReloading", false);
             OnPlayerReload?.Invoke();
 
-            SoundManager.PlaySound(reloadSound,transform.position);
+            SoundManager.PlaySound(reloadSound,this.transform.position);
         }
 
 

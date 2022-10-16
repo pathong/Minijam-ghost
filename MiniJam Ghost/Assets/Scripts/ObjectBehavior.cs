@@ -22,6 +22,7 @@ public class ObjectBehavior : ObjectInteraction
     [SerializeField] private bool Sequence;
     [SerializeField] private bool Timed;
     [SerializeField] private bool SpawnTrigger;
+    [SerializeField] private bool isSpawnWaveTrigger;
     [SerializeField] private bool isProgress;
     [SerializeField] private GameObject[] visits;
     [SerializeField] private GameObject[] lights;
@@ -31,14 +32,7 @@ public class ObjectBehavior : ObjectInteraction
 
     public override void Interact()
     {
-        if (SpawnTrigger)
-        {
-            WaveSpawn.SpawnNormal();
-        }
-        if (isProgress)
-        {
-            ProgressManager.i.IncreaseProgress();
-        }
+
         if (OnOff)
         {
             if (isActive)
@@ -57,6 +51,18 @@ public class ObjectBehavior : ObjectInteraction
         }
         else if (OnOnly & interactIcon & !used)
         {
+            if (SpawnTrigger)
+            {
+                WaveSpawn.SpawnNormal();
+            }
+            if (isProgress)
+            {
+                ProgressManager.i.IncreaseProgress();
+            }
+            if (isSpawnWaveTrigger)
+            {
+                WaveSpawn.SpawnWave();
+            }
             if (!isActive)
                 sr.sprite = active;
             isActive = !isActive;
@@ -69,6 +75,19 @@ public class ObjectBehavior : ObjectInteraction
         }
         else if (Sequence & interactIcon & !used)
         {
+            if (SpawnTrigger)
+            {
+                WaveSpawn.SpawnNormal();
+            }
+            if (isProgress)
+            {
+                ProgressManager.i.IncreaseProgress();
+            }
+            if (isSpawnWaveTrigger)
+            {
+                WaveSpawn.SpawnWave();
+            }
+
             if(!isActive)
                 sr.sprite = active;
             isActive = !isActive;
@@ -99,6 +118,8 @@ public class ObjectBehavior : ObjectInteraction
 
             if (!tick1 & !tick2)
             {
+                if (isProgress) { ProgressManager.i.IncreaseProgress(); }
+                WaveSpawn.SpawnWave();
                 StartCoroutine(Wait(lights[0]));
                 countdown.GetComponent<Countdown>().start = true;
                 isActive = false;
@@ -110,6 +131,7 @@ public class ObjectBehavior : ObjectInteraction
             }
             else if (tick1 & !tick2 & !noClick)
             {
+                if (isProgress) { ProgressManager.i.IncreaseProgress(); }
                 StartCoroutine(Wait(lights[1]));
                 countdown.GetComponent<Countdown>().start = true;
                 isActive = false;
@@ -121,6 +143,8 @@ public class ObjectBehavior : ObjectInteraction
             }
             else if (tick1 & tick2 & !noClick)
             {
+                if (isProgress) { ProgressManager.i.IncreaseProgress(); }
+                WaveSpawn.SpawnWave();
                 StartCoroutine(Wait(lights[2]));
                 countdown.GetComponent<Countdown>().start = true;
                 isActive = false;

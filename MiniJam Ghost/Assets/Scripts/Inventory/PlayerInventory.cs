@@ -12,6 +12,8 @@ public class PlayerInventory : MonoBehaviour
     [SerializeField] private BulletSO fireBullet;
     [SerializeField] private BulletSO lightBullet;
 
+    [SerializeField] private AudioClip collectSound;
+
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
@@ -23,17 +25,18 @@ public class PlayerInventory : MonoBehaviour
             switch (item.BulletType)
             {
                 case (BulletType.Normal):
-                    normalBullet.CurrentAmount++;
+                    normalBullet.CurrentAmount += 10;
                     break;
                 case (BulletType.Fire):
-                    fireBullet.CurrentAmount++;
+                    fireBullet.CurrentAmount += 10;
                     break;
                 case (BulletType.Light):
-                    lightBullet.CurrentAmount++;
+                    lightBullet.CurrentAmount += 10;
                     break;
             }
 
             Destroy(collision.gameObject);
+            SoundManager.PlaySound(collectSound, this.transform.position);
         }
     }
 

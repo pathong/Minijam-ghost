@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 6513146207295831456, guid: d59a9d2c412db2d418be431901488f87, type: 3}
       propertyPath: m_Name
-      value: ItemOnGround_Fire
+      value: ItemOnGround_Fire Variant
       objectReference: {fileID: 0}
     - target: {fileID: 6513146207295831457, guid: d59a9d2c412db2d418be431901488f87, type: 3}
       propertyPath: img
@@ -25,7 +25,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6513146207295831469, guid: d59a9d2c412db2d418be431901488f87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.27
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6513146207295831469, guid: d59a9d2c412db2d418be431901488f87, type: 3}
       propertyPath: m_LocalPosition.y
@@ -65,7 +65,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6513146208550725442, guid: d59a9d2c412db2d418be431901488f87, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.41
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6513146208550725443, guid: d59a9d2c412db2d418be431901488f87, type: 3}
       propertyPath: m_Sprite
