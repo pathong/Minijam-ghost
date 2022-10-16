@@ -1880,6 +1880,8 @@ MonoBehaviour:
   Health: 4
   currentHealth: 0
   TakeDmgSound: {fileID: 8300000, guid: b3ff18e4d5caab64fb2c583c405afdaf, type: 3}
+  healTime: 20
+  currentHealTime: 20
 --- !u!114 &19055078
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,9 +9,30 @@ public class PlayerHealth : MonoBehaviour, IDamangable
 
     [SerializeField] private AudioClip TakeDmgSound;
 
+    [SerializeField] private float healTime;
+    [SerializeField] private float currentHealTime;
+
     private void OnEnable()
     {
         currentHealth = Health;
+        currentHealTime = healTime;
+    }
+
+
+    private void Update()
+    {
+        if(currentHealth < Health)
+        {
+            if(currentHealTime>= 0)
+            {
+                currentHealTime-= Time.deltaTime;
+            }
+            else
+            { 
+                currentHealTime = healTime;
+                currentHealth++;
+            }
+        }
     }
 
 
@@ -21,6 +42,10 @@ public class PlayerHealth : MonoBehaviour, IDamangable
         if(currentHealth <= 0) { return; }
         SoundManager.PlaySound(TakeDmgSound,transform.position);
         currentHealth -= 1;
+        currentHealTime = healTime;
         if(currentHealth <= 0) { Destroy(gameObject); }
     }
+
+
+
 }
