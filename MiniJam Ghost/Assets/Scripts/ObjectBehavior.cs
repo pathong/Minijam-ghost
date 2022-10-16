@@ -63,6 +63,9 @@ public class ObjectBehavior : ObjectInteraction
             playerCharacter.GetComponent<PlayerInteraction>().CloseInteractionIcon();
             interactIcon = !interactIcon;
             used = true;
+
+            for (int x = 0; x < lights.Length; x++)
+                lights[x].SetActive(true);
         }
         else if (Sequence & interactIcon & !used)
         {
@@ -81,6 +84,9 @@ public class ObjectBehavior : ObjectInteraction
                 task = true;
             }
             used = true;
+
+            for (int x = 0; x < lights.Length; x++)
+                lights[x].SetActive(true);
         }
         else if (Timed & interactIcon & !used)
         {

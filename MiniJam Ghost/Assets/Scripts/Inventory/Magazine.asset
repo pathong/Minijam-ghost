@@ -17,7 +17,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
   - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
   - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
-  - {fileID: 11400000, guid: 761ec13e47129ee4d9059173759a5eee, type: 2}
+  - {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
   emptyBullet: {fileID: 11400000, guid: 7b8ae9f58007af1429f38fc97494b426, type: 2}
   NormalBullet: {fileID: 11400000, guid: 761ec13e47129ee4d9059173759a5eee, type: 2}
   FireBullet: {fileID: 11400000, guid: 19054c2a5c2c27140b00f0ca554ddf4d, type: 2}
