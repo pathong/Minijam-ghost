@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
         timer += Time.deltaTime;
 
         if (Input.GetKeyDown(KeyCode.Return)) {
-            StartCoroutine(GoNextScene());
+            StartCoroutine(GoNextScene("Tutorial"));
         }
         
         // if (timer > 1 && tAlpha < 1) {
@@ -50,11 +50,11 @@ public class MainMenu : MonoBehaviour
         }
     }
 
-    IEnumerator GoNextScene() {
+    IEnumerator GoNextScene(string scene) {
         img.enabled = true;
         StartCoroutine(Fade());
         yield return new WaitForSeconds(1);
-        SceneManager.LoadScene("Tutorial");
+        SceneManager.LoadScene(scene);
     }
 
     IEnumerator Fade() {
@@ -67,5 +67,21 @@ public class MainMenu : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
             if (a > 1) break;
         }
+    }
+
+    public void Button1() {
+        StartCoroutine(GoNextScene("Night1"));
+    }
+    public void Button2() {
+        StartCoroutine(GoNextScene("Night2"));
+    }
+    public void Button3() {
+        StartCoroutine(GoNextScene("Night4"));
+    }
+    public void Button4() {
+        StartCoroutine(GoNextScene("Night5"));
+    }
+    public void Quit() {
+        Application.Quit();
     }
 }
