@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     public Animator animator;
     [SerializeField] private GameObject sprite;
     [SerializeField] private float _moveSpeed;
-    [SerializeField] private AudioClip walkSound;
+    [SerializeField] private AudioClip[] walkSounds;
     [SerializeField] private SpriteRenderer gunRend;
     private bool isWalking;
     private bool isFacingRight = true;
@@ -73,7 +73,7 @@ public class PlayerMovement : MonoBehaviour
         {
             isWalking = true;
             float wait = 1f;
-            SoundManager.PlaySound(walkSound, transform.position);
+            SoundManager.PlaySound(SoundUtil.RandSound(walkSounds), transform.position);
             yield return new WaitForSeconds(wait);
             
         }

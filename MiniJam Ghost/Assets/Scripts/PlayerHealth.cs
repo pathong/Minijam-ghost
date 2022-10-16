@@ -7,7 +7,7 @@ public class PlayerHealth : MonoBehaviour, IDamangable
     public int Health;
     [HideInInspector] public int currentHealth;
 
-    [SerializeField] private AudioClip TakeDmgSound;
+    [SerializeField] private AudioClip[] takeDmgSounds;
 
     [SerializeField] private float healTime;
     [SerializeField] private float currentHealTime;
@@ -41,7 +41,7 @@ public class PlayerHealth : MonoBehaviour, IDamangable
     void IDamangable.TakeDamage()
     {
         if(currentHealth <= 0) { return; }
-        SoundManager.PlaySound(TakeDmgSound,transform.position);
+        SoundManager.PlaySound(SoundUtil.RandSound(takeDmgSounds),transform.position);
         currentHealth -= 1;
         currentHealTime = healTime;
         if(currentHealth <= 0) {
