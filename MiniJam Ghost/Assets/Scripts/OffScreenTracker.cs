@@ -7,6 +7,11 @@ public class OffScreenTracker : MonoBehaviour
     public GameObject target;
     [SerializeField] private float hideDistance = 1.5f;
 
+    private void Start()
+    {
+        SetIndicatorActive(false);
+    }
+
     private void Update()
     {
         if(!target.activeSelf)

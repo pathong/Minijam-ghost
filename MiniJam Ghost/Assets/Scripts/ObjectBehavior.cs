@@ -22,6 +22,7 @@ public class ObjectBehavior : ObjectInteraction
     [SerializeField] private bool Sequence;
     [SerializeField] private bool Timed;
     [SerializeField] private bool SpawnTrigger;
+    [SerializeField] private bool isProgress;
     [SerializeField] private GameObject[] visits;
     [SerializeField] private GameObject[] lights;
     private bool tick1 = false;
@@ -33,6 +34,10 @@ public class ObjectBehavior : ObjectInteraction
         if (SpawnTrigger)
         {
             WaveSpawn.SpawnNormal();
+        }
+        if (isProgress)
+        {
+            ProgressManager.i.IncreaseProgress();
         }
         if (OnOff)
         {
