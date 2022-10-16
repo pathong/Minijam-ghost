@@ -10,6 +10,7 @@ public class MagazineUI : MonoBehaviour
     [SerializeField] private MagazineSO so;
     [SerializeField] private List<Image> slots;
     [SerializeField] private Transform slotParent;
+    [SerializeField] private GameObject rToReload;
 
     private void Awake()
     {
@@ -20,7 +21,16 @@ public class MagazineUI : MonoBehaviour
     private void Update()
     {
         SetSlot();
+        if(so.GetFirstBullet() == -1)
+        {
+            rToReload.SetActive(true);
+        }
+        else
+        {
+            rToReload.SetActive(false);
+        }
     }
+
 
 
 

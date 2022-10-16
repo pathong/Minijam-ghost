@@ -15,7 +15,7 @@ public class InGameMenu : MonoBehaviour
     private bool isDead;
     private bool isFinish;
 
-    
+        
 
     private void Awake()
     {
@@ -122,6 +122,7 @@ public class InGameMenu : MonoBehaviour
 
     public void OpenBlackPanel()
     {
+        
         LeanTween.value(gameObject, 1, 0, 2f).setIgnoreTimeScale(true).setOnUpdate((float val) =>
         {
             Color c = blackPanel.color;
