@@ -200,6 +200,7 @@ MonoBehaviour:
   attackRange: 2
   attackTime: 1
   walkSound: {fileID: 8300000, guid: b56d51d22361e24479d59fe1b820afa9, type: 3}
+  smokePar: {fileID: 6680127725125438530, guid: 81a7482dc12353a43ab167e66e967d49, type: 3}
   MaxHealth: 10
   player: {fileID: 0}
   playerLayer:
@@ -236,7 +237,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c18c784ba50584a529e9fb89a90cbe62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  optionalChildSprites: []
   originOffsetY: -0.08
+  optionalChildSprites: []
   activateAlphaAdjustment: 0
   alphaDecreaseFactor: 0.5
+  invertZOffset: 0

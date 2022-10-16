@@ -16196,30 +16196,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 6641242970919185144, guid: bee1528b6210bc541a8d861c9a6b4356, type: 3}
-      propertyPath: reloadShell
-      value: 
-      objectReference: {fileID: 8300000, guid: 99a83dd991723224fa06bc745d525b96, type: 3}
-    - target: {fileID: 6641242970972762789, guid: bee1528b6210bc541a8d861c9a6b4356, type: 3}
-      propertyPath: reloadShell
-      value: 
-      objectReference: {fileID: 8300000, guid: 99a83dd991723224fa06bc745d525b96, type: 3}
-    - target: {fileID: 6641242971355607942, guid: bee1528b6210bc541a8d861c9a6b4356, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6641242971355607942, guid: bee1528b6210bc541a8d861c9a6b4356, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6641242971355607942, guid: bee1528b6210bc541a8d861c9a6b4356, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6641242972236624370, guid: bee1528b6210bc541a8d861c9a6b4356, type: 3}
-      propertyPath: reloadShell
-      value: 
-      objectReference: {fileID: 8300000, guid: 99a83dd991723224fa06bc745d525b96, type: 3}
     - target: {fileID: 6641242972608493460, guid: bee1528b6210bc541a8d861c9a6b4356, type: 3}
       propertyPath: m_Camera
       value: 

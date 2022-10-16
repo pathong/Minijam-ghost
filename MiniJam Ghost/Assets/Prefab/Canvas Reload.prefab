@@ -565,6 +565,7 @@ MonoBehaviour:
   bulletAmount: {fileID: 6641242970658450358}
   bullet: {fileID: 11400000, guid: 761ec13e47129ee4d9059173759a5eee, type: 2}
   magazine: {fileID: 11400000, guid: a1b1ccf6ba51aaf43866241b3ccc66ae, type: 2}
+  reloadShell: {fileID: 8300000, guid: 99a83dd991723224fa06bc745d525b96, type: 3}
 --- !u!114 &6641242970919185151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,6 +790,7 @@ MonoBehaviour:
   bulletAmount: {fileID: 6641242971217530797}
   bullet: {fileID: 11400000, guid: c550298a7a2f5104d98202b7c7f9fd2d, type: 2}
   magazine: {fileID: 11400000, guid: a1b1ccf6ba51aaf43866241b3ccc66ae, type: 2}
+  reloadShell: {fileID: 8300000, guid: 99a83dd991723224fa06bc745d525b96, type: 3}
 --- !u!114 &6641242970972762788
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1086,7 +1088,7 @@ RectTransform:
   m_GameObject: {fileID: 6641242971355607941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 6641242970744963454}
   - {fileID: 6641242970919185150}
@@ -1296,6 +1298,7 @@ MonoBehaviour:
   bulletAmount: {fileID: 6641242970574329694}
   bullet: {fileID: 11400000, guid: 19054c2a5c2c27140b00f0ca554ddf4d, type: 2}
   magazine: {fileID: 11400000, guid: a1b1ccf6ba51aaf43866241b3ccc66ae, type: 2}
+  reloadShell: {fileID: 8300000, guid: 99a83dd991723224fa06bc745d525b96, type: 3}
 --- !u!114 &6641242972236624369
 MonoBehaviour:
   m_ObjectHideFlags: 0
