@@ -37,12 +37,17 @@ public class PlayerShoot : MonoBehaviour
 
     private void OnEnable()
     {
-        //playerAction = new PlayerAction();
-        //playerAction.Enable();
-        InputManager.Controls.Movement.Shoot.performed += Shoot;
-        InputManager.Controls.Movement.Reload.performed += Reload;
+        playerAction = new PlayerAction();
+        playerAction.Enable();
+        playerAction.Movement.Shoot.performed += Shoot;
+        playerAction.Movement.Reload.performed += Reload;
     }
 
+    private void OnDisable()
+    {
+        playerAction.Disable();
+        playerAction.Movement.Shoot.performed -= Shoot;
+    }
 
 
     private void Awake()
@@ -74,6 +79,8 @@ public class PlayerShoot : MonoBehaviour
         if (SoundGraphManager.soundGraphManager != null) { SoundGraphManager.TriggerSoundGraph(transform.position); } 
         // trigger flash
         Flash.Trigger();
+        // send sound location
+        EnemyBoss.SendTargetSoundLocation(transform.position);
         // trigger gun animation
         animator.SetTrigger("Shoot");
         GameObject bullet = magazine.GetandShoot();

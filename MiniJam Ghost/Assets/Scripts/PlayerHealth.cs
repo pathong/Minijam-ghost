@@ -12,7 +12,6 @@ public class PlayerHealth : MonoBehaviour, IDamangable
     [SerializeField] private float healTime;
     [SerializeField] private float currentHealTime;
 
-
     private void OnEnable()
     {
         currentHealth = Health;
@@ -44,10 +43,7 @@ public class PlayerHealth : MonoBehaviour, IDamangable
         SoundManager.PlaySound(TakeDmgSound,transform.position);
         currentHealth -= 1;
         currentHealTime = healTime;
-        if(currentHealth <= 0) {
-            InGameMenu.instance.OnPlayerDeadHanddler();
-            
-        }
+        if(currentHealth <= 0) { Destroy(gameObject); }
     }
 
 

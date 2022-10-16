@@ -337,7 +337,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c13c30b71f5483d4abe2e7d2fa77b157, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  setTime: 5
+  setTime: 10
   start: 0
 --- !u!1 &9042544800355087922
 GameObject:
@@ -484,6 +484,8 @@ MonoBehaviour:
   - {fileID: 9042544800703589674}
   - {fileID: 9042544801891925676}
   - {fileID: 9042544800083481563}
+  InteractSound: {fileID: 8300000, guid: 92e84de2845c49e4eb17e2ea3838a303, type: 3}
+  DoneSound: {fileID: 8300000, guid: df5d2161929821f47b05cc5cc43ab720, type: 3}
 --- !u!114 &9042544800355087935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -529,7 +531,7 @@ MonoBehaviour:
   - {x: -1.4860468, y: -0.30630493, z: 0}
   m_ShapePathHash: 1101637129
   m_Mesh: {fileID: 0}
-  m_InstanceId: 185050
+  m_InstanceId: 127224
 --- !u!114 &6706820114038490157
 MonoBehaviour:
   m_ObjectHideFlags: 0
