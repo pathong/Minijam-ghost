@@ -71,7 +71,7 @@ public class WaveSpawn : MonoBehaviour
     /// Spawn monster in wave
     /// </summary>
     /// <param name="amount">default value for 1 wave is 5 monster</param>
-    public static void SpawnWave(int amount = 5)
+    public static void SpawnWave(int amount = 3)
     {
         Debug.Log("SpawnWave");
         for (int i = 0; i < amount; i++)
