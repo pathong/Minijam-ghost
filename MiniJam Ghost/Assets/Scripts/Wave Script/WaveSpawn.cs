@@ -6,54 +6,114 @@ using UnityEngine.Tilemaps;
 public class WaveSpawn : MonoBehaviour
 {
     static WaveSpawn waveSpawn;
-    [SerializeField] private Tilemap groundTilemap;
-    [SerializeField] private GameObject monsTest;
+    private Tilemap groundTilemap;
+
+    public GameObject enemyLv1;
+    public GameObject enemyLv2;
+
     private Transform player;
 
 
-    public Vector2 distance;
+    public float distance;
+    public float distanceFromPlayer;
+
+
+    public Vector2 MinMaxIntervalSpawnTime;
 
     private void Awake()
     {
         if (waveSpawn == null) waveSpawn = this;
-    }
-
-    private void Start()
-    {
-
-        NormalSpawn();
+        groundTilemap = GameObject.FindGameObjectWithTag("GroundTileMap").GetComponent<Tilemap>();
     }
 
 
 
-    public void NormalSpawn()
+
+    void NormalSpawn(GameObject monst = null)
     {
-        Instantiate(monsTest, GetSpawnPoint(), Quaternion.identity);
+        if(monst == null) { monst = enemyLv1; }
+        Instantiate(monst, GetSpawnPoint(), Quaternion.identity);
+    }
+
+    IEnumerator IntervalSpawn()
+    {
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(MinMaxIntervalSpawnTime.x, MinMaxIntervalSpawnTime.y));
+            NormalSpawn();
+        }
+    }
+
+    Vector2 GetSpawnPoint()
+    {
+        while (true)
+        {
+            player =  Extension.GetPlayer();
+
+            float x = Random.Range(-distance, distance);
+            float y = Random.Range(-distance, distance);
+
+            Vector2 pos = (Vector2)player.position + new Vector2(x, y);
+            Vector3Int loc = groundTilemap.WorldToCell(pos);
+            if (groundTilemap.GetTile(loc) && Vector2.Distance(player.position, pos) >= distanceFromPlayer)
+            {
+                return pos;
+            }
+        }
+            
+    }
+
+
+
+
+
+    /// <summary>
+    /// Spawn monster in wave
+    /// </summary>
+    /// <param name="amount">default value for 1 wave is 5 monster</param>
+    public static void SpawnWave(int amount = 5)
+    {
+        Debug.Log("SpawnWave");
+        for (int i = 0; i < amount; i++)
+        {
+            waveSpawn.NormalSpawn();
+        }
         
     }
-
-
-
-    public Vector2 GetSpawnPoint()
+     
+    /// <summary>
+    /// spawn monster once
+    /// </summary>
+    public static void SpawnNormal(GameObject monst = null)
     {
-        player =  Extension.GetPlayer();
+        Debug.Log("Spawn Normal");
+        waveSpawn.NormalSpawn(monst);
+    }
+    
+    /// <summary>
+    /// Start Interval Spawn
+    /// </summary>
+    public static void StartIntervalSpawn()
+    {
+        Debug.Log("Start Interval");
+        waveSpawn.StartCoroutine(waveSpawn.IntervalSpawn());
+    }
+    /// <summary>
+    /// Stop Interval Spawn
+    /// </summary>
+    public static void StopIntervalSpawn()
+    {
+        Debug.Log("Stop Interval");
+        waveSpawn.StopCoroutine(waveSpawn.IntervalSpawn());
+    }
 
-        float x = Random.Range(distance.x, distance.y);
-        float y = Random.Range(distance.x, distance.y);
+    
+    
+    [ContextMenu("Test SpawnInWave")]
+    public void SpawnWaveTest()
+    {
+        SpawnWave();
 
-        Vector2 pos = (Vector2)player.position + new Vector2(x, y);
-        if(groundTilemap.GetTile((Vector3Int)Vector2Int.RoundToInt(pos)) == null)
-        {
-            Debug.Log("null");
-            GetSpawnPoint();
-        }
-
-
-        return pos;
-
-
-
-            
     }
 
 

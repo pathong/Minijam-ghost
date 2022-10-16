@@ -60,7 +60,7 @@ public class WeaponWheelButtonController : MonoBehaviour
         if(magazine.GetEmptyIndex() == -1) { return; }
         if(bullet.CurrentAmount <= 0) { return; }
 
-        SoundManager.PlaySound(reloadShell);
+        SoundManager.PlaySound(reloadShell, transform.position);
         magazine.AddBullet(bullet);
         bullet.CurrentAmount--;
 

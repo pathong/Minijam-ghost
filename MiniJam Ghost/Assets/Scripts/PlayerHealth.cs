@@ -19,7 +19,7 @@ public class PlayerHealth : MonoBehaviour, IDamangable
     void IDamangable.TakeDamage()
     {
         if(currentHealth <= 0) { return; }
-        SoundManager.PlaySound(TakeDmgSound);
+        SoundManager.PlaySound(TakeDmgSound,transform.position);
         currentHealth -= 1;
         if(currentHealth <= 0) { Destroy(gameObject); }
     }
