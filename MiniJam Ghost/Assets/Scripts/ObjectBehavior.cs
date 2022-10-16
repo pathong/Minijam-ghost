@@ -32,9 +32,17 @@ public class ObjectBehavior : ObjectInteraction
         if (OnOff)
         {
             if (isActive)
+            {
                 sr.sprite = inactive;
+                for (int x = 0; x < lights.Length; x++)
+                    lights[x].SetActive(false);
+            }
             else
+            {
                 sr.sprite = active;
+                for (int x = 0; x < lights.Length; x++)
+                    lights[x].SetActive(true);
+            }
             isActive = !isActive;
         }
         else if (OnOnly & interactIcon & !used)

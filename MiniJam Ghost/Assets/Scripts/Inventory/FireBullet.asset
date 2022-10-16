@@ -16,4 +16,4 @@ MonoBehaviour:
   Prefab: {fileID: 4704494696853944462, guid: 26c58d363fc369145bab33bcf1b27453, type: 3}
   sprite: {fileID: 21300000, guid: 486a1964d1e70ea4e9d3e993d7e34369, type: 3}
   BulletName: BulletFire
-  CurrentAmount: 9
+  CurrentAmount: 100
