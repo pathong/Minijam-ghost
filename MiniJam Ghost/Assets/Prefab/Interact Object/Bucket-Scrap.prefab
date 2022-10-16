@@ -134,5 +134,3 @@ MonoBehaviour:
   Timed: 0
   visits: []
   lights: []
-  InteractSound: {fileID: 8300000, guid: 7476da70665505040800c1f60d762dfa, type: 3}
-  DoneSound: {fileID: 0}
