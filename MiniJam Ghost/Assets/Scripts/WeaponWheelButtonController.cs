@@ -16,6 +16,9 @@ public class WeaponWheelButtonController : MonoBehaviour
     public BulletSO bullet;
     public MagazineSO magazine;
 
+
+    public AudioClip reloadShell;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +59,8 @@ public class WeaponWheelButtonController : MonoBehaviour
     {
         if(magazine.GetEmptyIndex() == -1) { return; }
         if(bullet.CurrentAmount <= 0) { return; }
+
+        SoundManager.PlaySound(reloadShell);
         magazine.AddBullet(bullet);
         bullet.CurrentAmount--;
 

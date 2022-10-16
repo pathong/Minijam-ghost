@@ -8,8 +8,14 @@ public class FireField : MonoBehaviour
     [SerializeField] private float timePeriod;
     [SerializeField] private float lifeTime;
     [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private AudioClip fireSound;
 
 
+    private void Start()
+    {
+        StartCoroutine(waitToDestroy());
+        StartCoroutine(DoDamage());
+    }
 
     IEnumerator waitToDestroy()
     {
@@ -21,6 +27,7 @@ public class FireField : MonoBehaviour
     {
         while (true)
         {
+            
             yield return new WaitForSeconds(timePeriod);
             Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, radius, enemyLayer);
             foreach (var col in hits)
