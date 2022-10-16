@@ -41,7 +41,7 @@ public class Lightning : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.L)) Trigger();
+        // if (Input.GetKeyDown(KeyCode.L)) Trigger();
 
         timeTilNext -= Time.deltaTime;
         if (timeTilNext < 0) {
