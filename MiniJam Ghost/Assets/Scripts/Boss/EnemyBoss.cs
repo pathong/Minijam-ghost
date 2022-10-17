@@ -458,7 +458,7 @@ public class EnemyBoss : MonoBehaviour, IDamangable
     IEnumerator WalkSoundCR() {
         while(true) {
             if (walkSoundEnable) PlaySound(walkSounds);
-            SoundGraphManager.TriggerSoundGraph(transform.position);
+            if(SoundGraphManager.soundGraphManager != null) SoundGraphManager.TriggerSoundGraph(transform.position);
             yield return new WaitForSeconds(0.7f * (1 / walkSoundFrequencyFactor));
         }
     }
