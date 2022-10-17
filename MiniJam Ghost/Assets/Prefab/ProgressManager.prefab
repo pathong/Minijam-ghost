@@ -114,7 +114,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0e74ca7fd30ea240bc91ed867903fe8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  progressManager: {fileID: 953815070776257945}
   progressText: {fileID: 953815069925439527}
   TitleText: {fileID: 953815070992835973}
 --- !u!1 &953815069925439525
@@ -295,10 +294,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de8d3d1bee95984986c7edba5fdf73f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  QuestName: Get the bullet
-  progress: 2
-  currentProgress: 0
+  progresses:
+  - Description: Activate the generator
+    startAt: 0
+  - Description: Activate the light and Find Key
+    startAt: 1
+  - Description: Exit
+    startAt: 5
+  MaxProgress: 6
+  currProgress: 0
   progressSound: {fileID: 8300000, guid: 1cc398f48396a954fa010a6ed11272e3, type: 3}
+  progressUI: {fileID: 953815069478673567}
 --- !u!1 &953815070992835971
 GameObject:
   m_ObjectHideFlags: 0

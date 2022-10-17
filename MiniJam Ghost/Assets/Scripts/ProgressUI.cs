@@ -5,24 +5,14 @@ using TMPro;
 
 public class ProgressUI : MonoBehaviour
 {
-    [SerializeField] private ProgressManager progressManager;
     [SerializeField] private TMP_Text progressText; 
     [SerializeField] private TMP_Text TitleText; 
 
-    private void Awake()
-    {
-        if(progressManager == null) { progressManager = ProgressManager.i; }
-        progressManager.OnProgressActivate += SetData;
-    }
 
 
-    private void Start()
+    public void SetData(string des,  int curr, int max)
     {
-        SetData();
-    }
-    public void SetData()
-    {
-        TitleText.text = progressManager.QuestName;
-        progressText.text = string.Concat(progressManager.currentProgress, "/", progressManager.progress);
+        TitleText.text = des;
+        progressText.text = string.Concat(curr, "/",max);
     }
 }
