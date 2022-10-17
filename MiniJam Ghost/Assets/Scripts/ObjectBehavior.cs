@@ -118,7 +118,6 @@ public class ObjectBehavior : ObjectInteraction
 
             if (!tick1 & !tick2)
             {
-                if (isProgress) { ProgressManager.i.IncreaseProgress(); }
                 WaveSpawn.SpawnWave();
                 StartCoroutine(Wait(lights[0]));
                 countdown.GetComponent<Countdown>().start = true;
@@ -131,7 +130,6 @@ public class ObjectBehavior : ObjectInteraction
             }
             else if (tick1 & !tick2 & !noClick)
             {
-                if (isProgress) { ProgressManager.i.IncreaseProgress(); }
                 StartCoroutine(Wait(lights[1]));
                 countdown.GetComponent<Countdown>().start = true;
                 isActive = false;
@@ -143,7 +141,6 @@ public class ObjectBehavior : ObjectInteraction
             }
             else if (tick1 & tick2 & !noClick)
             {
-                if (isProgress) { ProgressManager.i.IncreaseProgress(); }
                 WaveSpawn.SpawnWave();
                 StartCoroutine(Wait(lights[2]));
                 countdown.GetComponent<Countdown>().start = true;
@@ -198,6 +195,7 @@ public class ObjectBehavior : ObjectInteraction
     {
         yield return new WaitForSeconds(countdown.GetComponent<Countdown>().setTime);
         lightBulbSprite.SetActive(true);
+        if (isProgress) { ProgressManager.i.IncreaseProgress(); }
         noClick = false;
     }
 }
