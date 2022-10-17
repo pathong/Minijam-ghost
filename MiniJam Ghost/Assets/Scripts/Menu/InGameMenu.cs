@@ -81,7 +81,7 @@ public class InGameMenu : MonoBehaviour
         }).setOnComplete(() => {
             Time.timeScale = 1;
             InputManager.Controls.Enable();
-            SceneManager.LoadScene("Menu");
+            SceneManager.LoadScene("MainMenu");
             }
         );
 
