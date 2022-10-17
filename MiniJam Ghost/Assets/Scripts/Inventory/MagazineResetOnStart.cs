@@ -8,13 +8,16 @@ public class MagazineResetOnStart : MonoBehaviour
     public BulletSO[] bulletSOs;
 
     void Start() {
-        for (int i = 0; i < magazineSO.magazine.Length; i++) {
-            BulletSO b = magazineSO.magazine[i];
-            b = null;
-        }
+        magazineSO.RemoveBullet(0);
+        magazineSO.RemoveBullet(1);
+        magazineSO.RemoveBullet(2);
+        magazineSO.RemoveBullet(3);
+        magazineSO.RemoveBullet(4);
+
+        magazineSO.AddNormal();
 
         foreach (BulletSO b in bulletSOs) {
-            b.CurrentAmount = 0;
+            b.CurrentAmount = 1;
         }
     }
 }

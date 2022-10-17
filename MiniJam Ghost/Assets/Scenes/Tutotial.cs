@@ -18,6 +18,8 @@ public class Tutotial : MonoBehaviour
         t4.enabled = false;
         t5.enabled = false;
         img.enabled = false;
+
+        InputManager.Controls.Enable();
     }
     
     void Update() {
@@ -37,14 +39,14 @@ public class Tutotial : MonoBehaviour
         }
         if (progress == 2) {
             t3.enabled = true;
-            if (Input.GetKeyDown(KeyCode.R)) {
+            if (Input.GetMouseButtonDown(0)) {
                 progress++;
                 t3.enabled = false;
             };
         }
         if (progress == 3) {
             t4.enabled = true;
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetKeyDown(KeyCode.R)) {
                 progress++;
                 t4.enabled = false;
             };
