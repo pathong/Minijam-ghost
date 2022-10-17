@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class Tutotial : MonoBehaviour
 {
-    private int progress = 0;
-    public TMP_Text t1, t2, t3, t4, t5;
+    public int progress = 0;
+    public TMP_Text t1, t2, t3, t4, t5, t6, t7;
     public Image img;
 
     void Start() {
@@ -17,6 +17,8 @@ public class Tutotial : MonoBehaviour
         t3.enabled = false;
         t4.enabled = false;
         t5.enabled = false;
+        t6.enabled = false;
+        t7.enabled = false;
         img.enabled = false;
 
         InputManager.Controls.Enable();
@@ -32,7 +34,7 @@ public class Tutotial : MonoBehaviour
         }
         if (progress == 1) {
             t2.enabled = true;
-            if (Input.GetKeyDown(KeyCode.S)) {
+            if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.D)) {
                 progress++;
                 t2.enabled = false;
             };
@@ -53,9 +55,23 @@ public class Tutotial : MonoBehaviour
         }
         if (progress == 4) {
             t5.enabled = true;
-            if (Input.GetKeyDown(KeyCode.Return)) {
+            if (Input.GetMouseButtonDown(0)) {
                 progress++;
                 t5.enabled = false;
+            };
+        }
+        if (progress == 5) {
+            t6.enabled = true;
+            if (Input.GetKeyDown(KeyCode.R)) {
+                progress++;
+                t6.enabled = false;
+            };
+        }
+        if (progress == 6) {
+            t7.enabled = true;
+            if (Input.GetKeyDown(KeyCode.Return)) {
+                progress++;
+                t7.enabled = false;
                 StartCoroutine(GoNextScene());
             };
         }
