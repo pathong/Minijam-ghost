@@ -345,7 +345,7 @@ public class EnemyBoss : MonoBehaviour, IDamangable
         if (player != null) {
             // get newPos close to player
             Vector3 origin = player.position;
-            Vector3 newPos = RandomNavCircle(origin, 2, -1);
+            Vector3 newPos = RandomNavCircle(origin, 0.5f, -1);
 
             // extend that so it run pass the player
             Vector3 delta = (newPos - transform.position);
