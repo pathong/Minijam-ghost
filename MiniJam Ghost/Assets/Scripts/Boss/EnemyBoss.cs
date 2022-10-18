@@ -163,7 +163,7 @@ public class EnemyBoss : MonoBehaviour, IDamangable
     }
 
     void FlipSpriteUpdate() {
-        if (Mathf.Sign(agent.velocity.x) != Mathf.Sign(transform.localScale.x)) {
+        if (Mathf.Sign(agent.velocity.x) == Mathf.Sign(transform.localScale.x)) {
             Vector3 _scale = transform.localScale;
             _scale.x *= -1;
             transform.localScale = _scale;
