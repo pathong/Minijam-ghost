@@ -1045,7 +1045,7 @@ MonoBehaviour:
   _bulletAmount: 5
   _maxAngle: 15
   _bulletPrefab: {fileID: 8315213831094247180, guid: 7746148f20c454949b4b7c8ca47d4821, type: 3}
-  shootSound: {fileID: 8300000, guid: f866b479e783061479e4cb7f52133dde, type: 3}
+  shootSound: {fileID: 8300000, guid: 556a5e291fc47e74eb272fb8665e1c03, type: 3}
   reloadSound: {fileID: 8300000, guid: 823e8be872d047742a5f865e9e85f08a, type: 3}
   _maxShootCooldown: 1
   maxBulletAmount: 4
